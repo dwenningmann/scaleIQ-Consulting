@@ -462,31 +462,31 @@ footer { padding: 22px 48px 22px 20px; display: flex; align-items: center; justi
           <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
             <div style="display:flex;flex-direction:column;gap:5px;">
               <label style="font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);">Ihr Name *</label>
-              <input type="text" id="tlName" placeholder="Max Mustermann" required style="height:44px;padding:0 14px;border:1px solid var(--rule);background:#fff;font-family:'Inter',sans-serif;font-size:13px;color:var(--ink);outline:none;transition:border-color .15s;" onfocus="this.style.borderColor='var(--lime-d)'" onblur="this.style.borderColor='var(--rule)'">
+              <input type="text" id="tlName" name="name" placeholder="Max Mustermann" required style="height:44px;padding:0 14px;border:1px solid var(--rule);background:#fff;font-family:'Inter',sans-serif;font-size:13px;color:var(--ink);outline:none;transition:border-color .15s;" onfocus="this.style.borderColor='var(--lime-d)'" onblur="this.style.borderColor='var(--rule)'">
             </div>
             <div style="display:flex;flex-direction:column;gap:5px;">
               <label style="font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);">Ihre Position (optional)</label>
-              <input type="text" id="tlPosition" placeholder="Geschäftsführer" style="height:44px;padding:0 14px;border:1px solid var(--rule);background:#fff;font-family:'Inter',sans-serif;font-size:13px;color:var(--ink);outline:none;transition:border-color .15s;" onfocus="this.style.borderColor='var(--lime-d)'" onblur="this.style.borderColor='var(--rule)'">
+              <input type="text" id="tlPosition" name="position" placeholder="Geschäftsführer" style="height:44px;padding:0 14px;border:1px solid var(--rule);background:#fff;font-family:'Inter',sans-serif;font-size:13px;color:var(--ink);outline:none;transition:border-color .15s;" onfocus="this.style.borderColor='var(--lime-d)'" onblur="this.style.borderColor='var(--rule)'">
             </div>
           </div>
           <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
             <div style="display:flex;flex-direction:column;gap:5px;">
               <label style="font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);">Ihre Firma (optional)</label>
-              <input type="text" id="tlFirma" placeholder="Mustermann GmbH" style="height:44px;padding:0 14px;border:1px solid var(--rule);background:#fff;font-family:'Inter',sans-serif;font-size:13px;color:var(--ink);outline:none;transition:border-color .15s;" onfocus="this.style.borderColor='var(--lime-d)'" onblur="this.style.borderColor='var(--rule)'">
+              <input type="text" id="tlFirma" name="firma" placeholder="Mustermann GmbH" style="height:44px;padding:0 14px;border:1px solid var(--rule);background:#fff;font-family:'Inter',sans-serif;font-size:13px;color:var(--ink);outline:none;transition:border-color .15s;" onfocus="this.style.borderColor='var(--lime-d)'" onblur="this.style.borderColor='var(--rule)'">
             </div>
             <div style="display:flex;flex-direction:column;gap:5px;">
               <label style="font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);">E-Mail *</label>
-              <input type="email" id="tlEmail" placeholder="max@firma.de" required style="height:44px;padding:0 14px;border:1px solid var(--rule);background:#fff;font-family:'Inter',sans-serif;font-size:13px;color:var(--ink);outline:none;transition:border-color .15s;" onfocus="this.style.borderColor='var(--lime-d)'" onblur="this.style.borderColor='var(--rule)'">
+              <input type="email" id="tlEmail" name="email" placeholder="max@firma.de" required style="height:44px;padding:0 14px;border:1px solid var(--rule);background:#fff;font-family:'Inter',sans-serif;font-size:13px;color:var(--ink);outline:none;transition:border-color .15s;" onfocus="this.style.borderColor='var(--lime-d)'" onblur="this.style.borderColor='var(--rule)'">
             </div>
           </div>
           <div style="display:flex;flex-direction:column;gap:5px;">
             <label style="font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);">Wunschkandidat / Zielbranche *</label>
-            <input type="text" id="tlBranche" placeholder="z.B. IT-Systemhäuser, Maschinenbau, Steuerberater ..." required style="height:44px;padding:0 14px;border:1px solid var(--rule);background:#fff;font-family:'Inter',sans-serif;font-size:13px;color:var(--ink);outline:none;transition:border-color .15s;" onfocus="this.style.borderColor='var(--lime-d)'" onblur="this.style.borderColor='var(--rule)'">
+            <input type="text" id="tlBranche" name="zielbranche" placeholder="z.B. IT-Systemhäuser, Maschinenbau, Steuerberater ..." required style="height:44px;padding:0 14px;border:1px solid var(--rule);background:#fff;font-family:'Inter',sans-serif;font-size:13px;color:var(--ink);outline:none;transition:border-color .15s;" onfocus="this.style.borderColor='var(--lime-d)'" onblur="this.style.borderColor='var(--rule)'">
           </div>
           <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
             <div style="display:flex;flex-direction:column;gap:5px;">
               <label style="font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);">Unternehmensgröße (optional)</label>
-              <select id="tlGroesse" style="height:44px;padding:0 14px;border:1px solid var(--rule);background:#fff;font-family:'Inter',sans-serif;font-size:13px;color:var(--ink);outline:none;appearance:none;cursor:pointer;transition:border-color .15s;" onfocus="this.style.borderColor='var(--lime-d)'" onblur="this.style.borderColor='var(--rule)'">
+              <select id="tlGroesse" name="unternehmensgroesse" style="height:44px;padding:0 14px;border:1px solid var(--rule);background:#fff;font-family:'Inter',sans-serif;font-size:13px;color:var(--ink);outline:none;appearance:none;cursor:pointer;transition:border-color .15s;" onfocus="this.style.borderColor='var(--lime-d)'" onblur="this.style.borderColor='var(--rule)'">
                 <option value="">Beliebig</option>
                 <option>1–10 Mitarbeitende</option>
                 <option>10–50 Mitarbeitende</option>
@@ -496,7 +496,7 @@ footer { padding: 22px 48px 22px 20px; display: flex; align-items: center; justi
             </div>
             <div style="display:flex;flex-direction:column;gap:5px;">
               <label style="font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);">Zielregion (optional)</label>
-              <input type="text" id="tlRegion" placeholder="z.B. Baden-Württemberg, DACH ..." style="height:44px;padding:0 14px;border:1px solid var(--rule);background:#fff;font-family:'Inter',sans-serif;font-size:13px;color:var(--ink);outline:none;transition:border-color .15s;" onfocus="this.style.borderColor='var(--lime-d)'" onblur="this.style.borderColor='var(--rule)'">
+              <input type="text" id="tlRegion" name="zielregion" placeholder="z.B. Baden-Württemberg, DACH ..." style="height:44px;padding:0 14px;border:1px solid var(--rule);background:#fff;font-family:'Inter',sans-serif;font-size:13px;color:var(--ink);outline:none;transition:border-color .15s;" onfocus="this.style.borderColor='var(--lime-d)'" onblur="this.style.borderColor='var(--rule)'">
             </div>
           </div>
           <button type="submit" id="tlSubmit" style="height:52px;background:var(--lime);color:var(--ink);border:none;font-family:'Space Grotesk',sans-serif;font-size:14px;font-weight:700;letter-spacing:.04em;cursor:pointer;transition:opacity .15s;margin-top:8px;">Kostenlosen Test-Lead anfordern →</button>

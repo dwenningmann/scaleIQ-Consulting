@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ScaleIQ Consulting – Ihre B2B-Pipeline. Vollständig gefüllt.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --ink:     #0C0C0A;
+  --paper:   #FAFAF8;
+  --mid:     #1A1A18;
+  --muted:   #6B6B68;
+  --rule:    #E0E0DC;
+  --lime:    #C8F135;
+  --lime-d:  #8faa24;
+  --white:   #ffffff;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: var(--paper);
+  color: var(--ink);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+.radar-line {
+  position: fixed;
+  left: 0; top: 0; bottom: 0;
+  width: 3px;
+  background: linear-gradient(to bottom, var(--lime) 0%, rgba(200,241,53,0.3) 40%, transparent 100%);
+  z-index: 200;
+  animation: radar-pulse 3s ease-in-out infinite;
+}
+
+@keyframes radar-pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
+
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 48px 0 20px;
+  background: rgba(250,250,248,0.94);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--rule);
+}
+
+.logo-wrap { display: flex; flex-direction: column; line-height: 1; padding-left: 16px; }
+.logo-main { font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 20px; letter-spacing: -.02em; color: var(--ink); }
+.logo-main b { color: var(--lime-d); }
+.logo-sub { font-family: 'Space Grotesk', sans-serif; font-weight: 500; font-size: 9px; letter-spacing: .22em; text-transform: uppercase; color: var(--muted); margin-top: 1px; }
+
+.nav-cta {
+  height: 36px; padding: 0 20px; background: var(--ink); color: var(--paper);
+  font-family: 'Space Grotesk', sans-serif; font-size: 12px; font-weight: 600;
+  letter-spacing: .04em; text-decoration: none; display: inline-flex; align-items: center; gap: 6px; transition: background .15s;
+}
+.nav-cta:hover { background: var(--lime); color: var(--ink); }
+
+.ticker { position: fixed; top: 56px; left: 0; right: 0; z-index: 99; height: 28px; background: var(--ink); overflow: hidden; display: flex; align-items: center; }
+.ticker-track { display: flex; white-space: nowrap; animation: tick 30s linear infinite; }
+@keyframes tick { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+.ti { font-size: 10px; font-weight: 500; letter-spacing: .18em; text-transform: uppercase; color: rgba(255,255,255,.3); padding: 0 32px; flex-shrink: 0; }
+.ti.hi { color: var(--lime); }
+
+.hero { padding-top: calc(56px + 28px); min-height: 100vh; display: grid; grid-template-columns: 1fr 420px; border-bottom: 1px solid var(--rule); }
+
+.hero-l { padding: 80px 56px 80px 64px; border-right: 1px solid var(--rule); display: flex; flex-direction: column; justify-content: space-between; }
+
+.hero-eyebrow { font-size: 11px; font-weight: 500; letter-spacing: .2em; text-transform: uppercase; color: var(--muted); margin-bottom: 32px; display: flex; align-items: center; gap: 10px; }
+.hero-eyebrow::before { content: ''; width: 20px; height: 2px; background: var(--lime); display: block; }
+
+h1 { font-family: 'Space Grotesk', sans-serif; font-size: clamp(44px, 5.5vw, 76px); font-weight: 700; line-height: .9; letter-spacing: -.04em; color: var(--ink); margin-bottom: 32px; }
+h1 .lime { color: var(--lime-d); }
+h1 .ghost { color: transparent; -webkit-text-stroke: 2px var(--rule); }
+
+.hero-promise { font-size: 16px; font-weight: 500; color: var(--ink); line-height: 1.6; max-width: 440px; padding-left: 18px; border-left: 3px solid var(--lime); margin-bottom: 48px; }
+
+.btn-main { height: 52px; padding: 0 32px; background: var(--lime); color: var(--ink); font-family: 'Space Grotesk', sans-serif; font-size: 14px; font-weight: 700; letter-spacing: .02em; text-decoration: none; display: inline-flex; align-items: center; gap: 10px; transition: opacity .15s; width: fit-content; }
+.btn-main:hover { opacity: .85; }
+.btn-ghost { height: 52px; padding: 0 24px; border: 1px solid var(--rule); color: var(--muted); font-family: 'Space Grotesk', sans-serif; font-size: 13px; font-weight: 500; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; transition: border-color .15s, color .15s; }
+.btn-ghost:hover { border-color: var(--ink); color: var(--ink); }
+.hero-btns { display: flex; gap: 12px; flex-wrap: wrap; }
+
+.hero-r { padding: 80px 48px; background: var(--mid); display: flex; flex-direction: column; gap: 0; }
+.hr-label { font-size: 10px; font-weight: 600; letter-spacing: .2em; text-transform: uppercase; color: rgba(255,255,255,.25); margin-bottom: 24px; }
+.check-list { display: flex; flex-direction: column; flex: 1; }
+.check-item { display: flex; align-items: flex-start; gap: 14px; padding: 15px 0; border-bottom: 1px solid rgba(255,255,255,.07); }
+.check-item:first-child { border-top: 1px solid rgba(255,255,255,.07); }
+.cdot { width: 6px; height: 6px; border-radius: 50%; background: var(--lime); flex-shrink: 0; margin-top: 5px; }
+.check-item span { font-size: 13px; color: rgba(255,255,255,.6); line-height: 1.6; }
+.hero-kpi { margin-top: 36px; padding-top: 28px; border-top: 1px solid rgba(255,255,255,.1); }
+.kpi-num { font-family: 'Space Grotesk', sans-serif; font-size: 38px; font-weight: 700; color: var(--lime); letter-spacing: -.03em; line-height: 1; margin-bottom: 4px; }
+.kpi-label { font-size: 11px; color: rgba(255,255,255,.3); letter-spacing: .06em; text-transform: uppercase; line-height: 1.5; }
+
+.section-band { display: grid; grid-template-columns: 200px 1fr; border-bottom: 1px solid var(--rule); }
+.band-l { padding: 36px 40px; border-right: 1px solid var(--rule); font-size: 10px; font-weight: 600; letter-spacing: .2em; text-transform: uppercase; color: var(--muted); display: flex; align-items: center; }
+.band-r { padding: 36px 48px; font-family: 'Space Grotesk', sans-serif; font-size: clamp(18px, 2.2vw, 26px); font-weight: 700; letter-spacing: -.02em; color: var(--ink); line-height: 1.1; }
+
+.steps { display: grid; grid-template-columns: repeat(4, 1fr); border-bottom: 1px solid var(--rule); }
+.step { padding: 48px 36px; border-right: 1px solid var(--rule); }
+.step:last-child { border-right: none; }
+.step-num { font-size: 11px; font-weight: 700; letter-spacing: .15em; color: var(--lime-d); margin-bottom: 20px; }
+.step-icon { width: 36px; height: 36px; background: var(--ink); display: flex; align-items: center; justify-content: center; margin-bottom: 16px; }
+.step-icon svg { width: 18px; height: 18px; stroke: var(--lime); fill: none; stroke-width: 1.5; }
+.step-title { font-family: 'Space Grotesk', sans-serif; font-size: 16px; font-weight: 700; letter-spacing: -.01em; color: var(--ink); margin-bottom: 8px; }
+.step-desc { font-size: 13px; color: var(--muted); line-height: 1.7; }
+
+.signal-stripe { background: var(--lime); height: 60px; display: flex; align-items: center; justify-content: space-between; padding: 0 48px; border-bottom: 1px solid var(--rule); gap: 24px; }
+.signal-text { font-family: 'Space Grotesk', sans-serif; font-size: clamp(13px, 1.4vw, 16px); font-weight: 700; letter-spacing: -.01em; color: var(--ink); }
+.signal-link { font-size: 12px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--ink); text-decoration: none; display: flex; align-items: center; gap: 6px; white-space: nowrap; flex-shrink: 0; }
+
+.pricing { border-bottom: 1px solid var(--rule); }
+.pricing-grid { display: grid; grid-template-columns: 1fr 1fr; }
+.price-card { padding: 56px 52px; border-right: 1px solid var(--rule); position: relative; }
+.price-card:last-child { border-right: none; background: var(--mid); }
+.price-badge { position: absolute; top: 20px; right: 20px; background: var(--lime); color: var(--ink); font-size: 10px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; padding: 4px 12px; }
+.price-tag { font-size: 10px; font-weight: 600; letter-spacing: .2em; text-transform: uppercase; color: var(--muted); margin-bottom: 16px; }
+.dark .price-tag { color: rgba(255,255,255,.3); }
+.price-num { font-family: 'Space Grotesk', sans-serif; font-size: 58px; font-weight: 700; letter-spacing: -.04em; color: var(--ink); line-height: 1; margin-bottom: 6px; }
+.dark .price-num { color: var(--lime); }
+.price-period { font-size: 13px; color: var(--muted); margin-bottom: 32px; }
+.dark .price-period { color: rgba(255,255,255,.35); }
+.price-items { display: flex; flex-direction: column; gap: 0; margin-bottom: 32px; }
+.pi { display: flex; align-items: center; gap: 10px; padding: 11px 0; border-bottom: 1px solid var(--rule); font-size: 13px; color: var(--ink); }
+.dark .pi { border-bottom-color: rgba(255,255,255,.07); color: rgba(255,255,255,.65); }
+.pi:last-child { border-bottom: none; }
+.pi::before { content: '✓'; color: var(--lime-d); font-weight: 700; font-size: 12px; flex-shrink: 0; }
+.dark .pi::before { color: var(--lime); }
+.price-saving { font-size: 12px; color: rgba(255,255,255,.3); margin-bottom: 24px; }
+.price-saving strong { color: rgba(255,255,255,.6); }
+.price-btn { height: 48px; padding: 0 28px; display: inline-flex; align-items: center; font-family: 'Space Grotesk', sans-serif; font-size: 13px; font-weight: 700; letter-spacing: .03em; text-decoration: none; transition: opacity .15s; gap: 8px; }
+.price-btn-dark { background: var(--ink); color: var(--paper); }
+.price-btn-dark:hover { background: #333; }
+.price-btn-lime { background: var(--lime); color: var(--ink); }
+.price-btn-lime:hover { opacity: .85; }
+.price-compare { padding: 18px 52px; background: #F0F0EC; display: flex; align-items: center; justify-content: center; gap: 48px; flex-wrap: wrap; border-top: 1px solid var(--rule); }
+.pc-item { text-align: center; }
+.pc-val { font-family: 'Space Grotesk', sans-serif; font-size: 17px; font-weight: 700; color: var(--ink); }
+.pc-val.a { color: var(--lime-d); }
+.pc-lbl { font-size: 11px; color: var(--muted); margin-top: 2px; }
+.pc-sep { font-size: 20px; color: var(--rule); }
+
+.faq { border-bottom: 1px solid var(--rule); }
+.faq-item { border-bottom: 1px solid var(--rule); cursor: pointer; }
+.faq-item:last-child { border-bottom: none; }
+.faq-q { padding: 22px 48px; font-size: 14px; font-weight: 500; color: var(--ink); display: flex; justify-content: space-between; align-items: center; gap: 20px; user-select: none; }
+.faq-icon { font-size: 20px; font-weight: 300; color: var(--muted); flex-shrink: 0; transition: transform .2s, color .15s; width: 20px; text-align: center; }
+.faq-item.open .faq-icon { transform: rotate(45deg); color: var(--lime-d); }
+.faq-a { display: none; padding: 0 48px 22px; font-size: 13px; color: var(--muted); line-height: 1.8; max-width: 680px; }
+.faq-item.open .faq-a { display: block; }
+
+.form-wrap { position: relative; min-height: 490px; display: flex; flex-direction: column; justify-content: center; }
+#testLeadForm { transition: opacity 0.3s ease; opacity: 1; }
+#tlSuccess { position: absolute; top: 50%; left: 0; right: 0; transform: translateY(-50%); opacity: 0; transition: opacity 0.4s ease; display: none; padding: 40px; background: #fff; border: 2px solid var(--lime); font-size: 15px; color: var(--lime-d); text-align: center; font-weight: 600; line-height: 1.6; }
+
+footer { padding: 22px 48px 22px 20px; display: flex; align-items: center; justify-content: space-between; font-size: 11px; color: var(--muted); border-top: 1px solid var(--rule); }
+.footer-logo { font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 14px; color: var(--ink); padding-left: 16px; }
+.footer-logo b { color: var(--lime-d); }
+.footer-logo span { font-size: 9px; letter-spacing: .15em; color: var(--muted); display: block; margin-top: 1px; }
+
+@media (max-width: 860px) {
+  #kontakt > div:nth-child(2) { grid-template-columns: 1fr !important; }
+  #kontakt > div:nth-child(2) > div { border-right: none !important; border-bottom: 1px solid var(--rule); padding: 40px 20px !important; }
+  nav { padding: 0 16px 0 12px; }
+  .radar-line { display: none; }
+  .hero { grid-template-columns: 1fr; }
+  .hero-l { padding: 48px 20px; border-right: none; border-bottom: 1px solid var(--rule); }
+  .hero-r { padding: 40px 20px; }
+  .section-band { grid-template-columns: 1fr; }
+  .band-l { padding: 20px; border-right: none; border-bottom: 1px solid var(--rule); }
+  .band-r { padding: 20px; }
+  .steps { grid-template-columns: 1fr; }
+  .step { border-right: none; border-bottom: 1px solid var(--rule); padding: 32px 20px; }
+  .signal-stripe { padding: 16px 20px; height: auto; flex-direction: column; align-items: flex-start; gap: 12px; }
+  .pricing-grid { grid-template-columns: 1fr; }
+  .price-card { border-right: none; border-bottom: 1px solid var(--rule); padding: 40px 20px; }
+  .price-compare { padding: 16px 20px; gap: 20px; }
+  .faq-q { padding: 18px 20px; font-size: 13px; }
+  .faq-a { padding: 0 20px 18px; }
+  .form-wrap { min-height: auto; }
+  #tlSuccess { position: static; transform: none; margin-top: 20px; }
+  footer { padding: 16px 20px; flex-direction: column; gap: 8px; text-align: center; }
+}
+</style>
+</head>
+<body>
+
+<div class="radar-line"></div>
+
+<nav>
+  <div class="logo-wrap">
+    <div class="logo-main">Scale<b>IQ</b></div>
+    <div class="logo-sub">Consulting</div>
+  </div>
+  <a href="#kontakt" class="nav-cta">Kostenlosen Lead anfordern →</a>
+</nav>
+
+<div class="ticker" aria-hidden="true">
+  <div class="ticker-track">
+    <span class="ti hi">ScaleIQ Consulting</span>
+    <span class="ti">Stets gefüllte B2B-Pipeline</span>
+    <span class="ti">·</span>
+    <span class="ti">Ihr Vertriebler fokussiert sich auf den Abschluss</span>
+    <span class="ti">·</span>
+    <span class="ti">20 qualifizierte Leads / Monat</span>
+    <span class="ti">·</span>
+    <span class="ti hi">Direktkontakt ermittelt</span>
+    <span class="ti">·</span>
+    <span class="ti">Omnichannel – Mail & LinkedIn</span>
+    <span class="ti">·</span>
+    <span class="ti hi">ScaleIQ Consulting</span>
+    <span class="ti">Stets gefüllte B2B-Pipeline</span>
+    <span class="ti">·</span>
+    <span class="ti">Ihr Vertriebler fokussiert sich auf den Abschluss</span>
+    <span class="ti">·</span>
+    <span class="ti">20 qualifizierte Leads / Monat</span>
+    <span class="ti">·</span>
+    <span class="ti hi">Direktkontakt ermittelt</span>
+    <span class="ti">·</span>
+    <span class="ti">Omnichannel – Mail & LinkedIn</span>
+    <span class="ti">·</span>
+  </div>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-l">
+    <div>
+      <div class="hero-eyebrow">B2B Leadgenerierung · Für den Mittelstand</div>
+      <h1>Ihre Pipeline.<br><span class="lime">Vollständig</span><br><span class="ghost">gefüllt.</span></h1>
+      <p class="hero-promise">Ihr Vertriebsteam bekommt monatlich 20 hochqualifizierte Entscheider-Leads – mit direktem Draht zur Entscheiderebene. Die Ansprache per Mail und LinkedIn ist fertig formuliert und wartet auf einen Klick. Ihr Team fokussiert sich auf Abschlüsse.</p>
+    </div>
+    <div class="hero-btns">
+      <a href="#kontakt" class="btn-main">Kostenlosen Lead anfordern →</a>
+      <a href="https://calendly.com/DEIN-LINK" target="_blank" class="btn-ghost">30 Min. Gespräch buchen</a>
+    </div>
+  </div>
+  <div class="hero-r">
+    <div class="hr-label">Was Sie erhalten</div>
+    <div class="check-list">
+      <div class="check-item"><div class="cdot"></div><span>20 hochqualifizierte, aktuelle Entscheider-Leads/Monat</span></div>
+      <div class="check-item"><div class="cdot"></div><span>Entscheider identifiziert – Direktkontakt wo möglich ermittelt</span></div>
+      <div class="check-item"><div class="cdot"></div><span>Omnichannel – Mail & LinkedIn – je ein Klick pro Kanal</span></div>
+      <div class="check-item"><div class="cdot"></div><span>Perfekt individualisiertes Anschreiben – fertig zum Senden</span></div>
+      <div class="check-item"><div class="cdot"></div><span>3 Follow-ups vorformuliert & terminiert</span></div>
+      <div class="check-item"><div class="cdot"></div><span>Schlüsselfertiges CRM · 100% mobil · von überall</span></div>
+    </div>
+    <div class="hero-kpi">
+      <div class="kpi-num">20</div>
+      <div class="kpi-label">Qualifizierte Entscheider-Leads –<br>monatlich, zuverlässig, fertig zur Ansprache</div>
+    </div>
+  </div>
+</section>
+
+<!-- WAS SIE ERHALTEN -->
+<section>
+  <div class="section-band">
+    <div class="band-l">Was Sie erhalten</div>
+    <div class="band-r">Monatlich. Zuverlässig.<br>Ohne Aufwand.</div>
+  </div>
+  <div class="steps">
+    <div class="step">
+      <div class="step-num">01</div>
+      <div class="step-icon"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+      <div class="step-title">Direkt zur Entscheiderebene</div>
+      <p class="step-desc">Für jeden Lead wird der Entscheider identifiziert und – wo möglich – die direkte E-Mail-Adresse ermittelt. Passend zu Ihrer Zielgruppe, Branche und Region.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">02</div>
+      <div class="step-icon"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
+      <div class="step-title">Omnichannel-Ansprache</div>
+      <p class="step-desc">Mail und LinkedIn – beide Kanäle, je ein Klick. Jedes Anschreiben ist individuell auf den Entscheider zugeschnitten. Kein Schreiben, kein Kopieren.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">03</div>
+      <div class="step-icon"><svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
+      <div class="step-title">3 Follow-ups inklusive</div>
+      <p class="step-desc">Drei vorformulierte, individuell abgestimmte Follow-ups – terminiert und sequenziert. Ihre Pipeline bleibt in Bewegung ohne zusätzlichen Aufwand.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">04</div>
+      <div class="step-icon"><svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
+      <div class="step-title">Schlüsselfertiges CRM</div>
+      <p class="step-desc">Alle Leads und Follow-ups in einem sofort einsatzbereiten CRM. 100% mobil – vom Laptop, Tablet oder Smartphone. Jederzeit den Überblick.</p>
+    </div>
+  </div>
+</section>
+
+<!-- SIGNAL -->
+<div class="signal-stripe">
+  <span class="signal-text">Mail und LinkedIn raus. Direkt zum Entscheider. Monatlich. Zuverlässig. Fertig.</span>
+  <a href="#kontakt" class="signal-link">Lead anfordern →</a>
+</div>
+
+<!-- TRUST -->
+<section style="border-bottom:1px solid var(--rule);">
+  <div class="section-band">
+    <div class="band-l">Stimmen</div>
+    <div class="band-r">Was C-Level-Entscheider<br>sagen.</div>
+  </div>
+
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);border-bottom:1px solid var(--rule);">
+    <div style="padding:48px 40px;border-right:1px solid var(--rule);display:flex;flex-direction:column;gap:20px;">
+      <div style="font-size:32px;color:var(--lime);font-family:'Space Grotesk',sans-serif;font-weight:700;line-height:1;">„</div>
+      <p style="font-size:15px;color:var(--ink);line-height:1.75;font-style:italic;flex:1;">Die Qualität der Leads hat mich überrascht. Echte Entscheider mit Kontext – nicht irgendwelche info@-Adressen. Das hätte mein Team Stunden gekostet.</p>
+      <div style="display:flex;align-items:center;gap:12px;padding-top:20px;border-top:1px solid var(--rule);">
+        <div style="width:36px;height:36px;border-radius:50%;background:var(--mid);color:var(--lime);display:flex;align-items:center;justify-content:center;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:13px;flex-shrink:0;">MS</div>
+        <div>
+          <div style="font-size:13px;font-weight:600;color:var(--ink);font-family:'Space Grotesk',sans-serif;">Geschäftsführer</div>
+          <div style="font-size:12px;color:var(--muted);margin-top:2px;">IT-Systemhaus · Stuttgart</div>
+        </div>
+      </div>
+    </div>
+    <div style="padding:48px 40px;border-right:1px solid var(--rule);display:flex;flex-direction:column;gap:20px;background:#F5F5F3;">
+      <div style="font-size:32px;color:var(--lime);font-family:'Space Grotesk',sans-serif;font-weight:700;line-height:1;">„</div>
+      <p style="font-size:15px;color:var(--ink);line-height:1.75;font-style:italic;flex:1;">Die Einfachheit hat mich beeindruckt. Lead, Dossier, fertige Mail – alles auf einen Blick. Mein Vertriebler konnte sofort loslegen.</p>
+      <div style="display:flex;align-items:center;gap:12px;padding-top:20px;border-top:1px solid var(--rule);">
+        <div style="width:36px;height:36px;border-radius:50%;background:var(--mid);color:var(--lime);display:flex;align-items:center;justify-content:center;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:13px;flex-shrink:0;">AB</div>
+        <div>
+          <div style="font-size:13px;font-weight:600;color:var(--ink);font-family:'Space Grotesk',sans-serif;">Head of Sales</div>
+          <div style="font-size:12px;color:var(--muted);margin-top:2px;">B2B-Dienstleister · Region Stuttgart</div>
+        </div>
+      </div>
+    </div>
+    <div style="padding:48px 40px;display:flex;flex-direction:column;gap:20px;">
+      <div style="font-size:32px;color:var(--lime);font-family:'Space Grotesk',sans-serif;font-weight:700;line-height:1;">„</div>
+      <p style="font-size:15px;color:var(--ink);line-height:1.75;font-style:italic;flex:1;">Die Bezugspunkte in den Anschreiben sind bemerkenswert. Das liest sich nicht wie Kaltakquise – das liest sich wie eine persönliche Nachricht.</p>
+      <div style="display:flex;align-items:center;gap:12px;padding-top:20px;border-top:1px solid var(--rule);">
+        <div style="width:36px;height:36px;border-radius:50%;background:var(--mid);color:var(--lime);display:flex;align-items:center;justify-content:center;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:13px;flex-shrink:0;">TK</div>
+        <div>
+          <div style="font-size:13px;font-weight:600;color:var(--ink);font-family:'Space Grotesk',sans-serif;">Geschäftsführer</div>
+          <div style="font-size:12px;color:var(--muted);margin-top:2px;">Mittelst. Unternehmen · Stuttgart</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ÜBER MICH STRIP -->
+  <div style="display:grid;grid-template-columns:260px 1fr;">
+    <div style="padding:36px 40px;border-right:1px solid var(--rule);background:var(--mid);display:flex;flex-direction:column;justify-content:center;gap:6px;">
+      <div style="font-size:10px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:6px;">Dahinter steckt</div>
+      <div style="font-family:'Space Grotesk',sans-serif;font-size:18px;font-weight:700;color:#fff;letter-spacing:-.01em;">David Wenningmann</div>
+      <div style="font-size:12px;color:rgba(255,255,255,.4);">Gründer · ScaleIQ Consulting</div>
+    </div>
+    <div style="padding:36px 56px;display:flex;align-items:center;">
+      <p style="font-size:14px;color:var(--muted);line-height:1.8;max-width:680px;">Als langjähriger Head of Operations mit Verantwortung für 150+ Mitarbeitende weiß ich exakt wie viel teure Arbeitszeit durch ineffiziente Vertriebsrecherche verloren geht. Als Full-Stack-Entwickler habe ich dieses System gebaut um genau diesen Engpass zu lösen. ScaleIQ Consulting gewinnt seine eigenen Kunden mit demselben System das wir Ihnen anbieten.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="pricing" id="pricing">
+  <div class="section-band">
+    <div class="band-l">Investition</div>
+    <div class="band-r">Transparent.<br>Planbar. Kein Risiko.</div>
+  </div>
+  <div class="pricing-grid">
+    <div class="price-card">
+      <div class="price-tag">Flexibel · 6 Monate</div>
+      <div class="price-num">1.990 €</div>
+      <div class="price-period">pro Monat · zzgl. MwSt.</div>
+      <div class="price-items">
+        <div class="pi">20 hochqualifizierte Entscheider-Leads/Monat</div>
+        <div class="pi">Entscheider identifiziert · Direktkontakt ermittelt</div>
+        <div class="pi">Omnichannel – Mail & LinkedIn · Je ein Klick</div>
+        <div class="pi">Perfekt individualisiertes Anschreiben</div>
+        <div class="pi">3 Follow-ups vorformuliert & terminiert</div>
+        <div class="pi">Schlüsselfertiges CRM · 100% mobil</div>
+      </div>
+      <a href="#kontakt" class="price-btn price-btn-dark">Lead anfordern →</a>
+    </div>
+    <div class="price-card dark">
+      <div class="price-badge">Empfohlen</div>
+      <div class="price-tag">Planbar · 12 Monate</div>
+      <div class="price-num">1.490 €</div>
+      <div class="price-period">pro Monat · zzgl. MwSt.</div>
+      <div class="price-items">
+        <div class="pi">20 hochqualifizierte Entscheider-Leads/Monat</div>
+        <div class="pi">Entscheider identifiziert · Direktkontakt ermittelt</div>
+        <div class="pi">Omnichannel – Mail & LinkedIn · Je ein Klick</div>
+        <div class="pi">Perfekt individualisiertes Anschreiben</div>
+        <div class="pi">3 Follow-ups vorformuliert & terminiert</div>
+        <div class="pi">Schlüsselfertiges CRM · 100% mobil</div>
+      </div>
+      <div class="price-saving">Ersparnis gegenüber 6 Monaten: <strong>6.000 €</strong></div>
+      <a href="#kontakt" class="price-btn price-btn-lime">Lead anfordern →</a>
+    </div>
+  </div>
+  <div class="price-compare">
+    <div class="pc-item"><div class="pc-val">250–550 €</div><div class="pc-lbl">SDR-Kosten pro Lead (Markt)</div></div>
+    <div class="pc-sep">vs.</div>
+    <div class="pc-item"><div class="pc-val a">ab 74,50 €</div><div class="pc-lbl">ScaleIQ pro Lead (20/Monat)</div></div>
+    <div class="pc-sep">→</div>
+    <div class="pc-item"><div class="pc-val">bis 7×</div><div class="pc-lbl">günstiger als klassischer Outbound</div></div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq">
+  <div class="section-band">
+    <div class="band-l">FAQ</div>
+    <div class="band-r">Ehrliche Antworten.</div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q">„Wir haben das intern schon versucht." <span class="faq-icon">+</span></div>
+    <div class="faq-a">Das hören wir oft. Meistens liegt es nicht am Willen – sondern daran dass manuelle Recherche zeitaufwendig, inkonsistent und nicht skalierbar ist. ScaleIQ Consulting liefert täglich frische, qualifizierte Kontakte – ohne internen Aufwand.</div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q">„Werden Termine oder Abschlüsse garantiert?" <span class="faq-icon">+</span></div>
+    <div class="faq-a">Nein – und das ist bewusst so. Wir versprechen eine stets gefüllte Pipeline mit qualifizierten Kontakten, fertigen Mails und Follow-ups. Die Konversation führt Ihr Vertriebler. Wir nehmen ihm die Vorbereitung vollständig ab.</div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q">„Wie schnell sehen wir erste Ergebnisse?" <span class="faq-icon">+</span></div>
+    <div class="faq-a">Erste Leads und Mails sind typisch innerhalb von 7 Tagen nach Start einsatzbereit. Erste Rückmeldungen aus dem Outreach entstehen meist in Woche 2–4 – abhängig von Branche und Zielgruppe.</div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q">„Was bedeutet Omnichannel genau?" <span class="faq-icon">+</span></div>
+    <div class="faq-a">Jeder Lead kann per Mail und per LinkedIn angesprochen werden – je mit einem Klick. Beide Nachrichten sind individuell auf den Entscheider zugeschnitten. Maximale Sichtbarkeit auf beiden Kanälen ohne doppelten Aufwand.</div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q">„Für welche Branchen funktioniert das?" <span class="faq-icon">+</span></div>
+    <div class="faq-a">Primär für B2B-Unternehmen mit aktivem Vertrieb – IT-Systemhäuser, Dienstleister, Maschinenbau, Professional Services. Überall wo Neukundenakquise durch Recherche gebremst wird.</div>
+  </div>
+</section>
+
+<!-- KONTAKT -->
+<section id="kontakt" style="border-bottom:1px solid var(--rule);">
+  <div class="section-band">
+    <div class="band-l">Kostenlos testen</div>
+    <div class="band-r">Überzeugen Sie sich –<br>ohne Risiko.</div>
+  </div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;">
+    <div style="padding:64px 56px;border-right:1px solid var(--rule);display:flex;flex-direction:column;justify-content:space-between;">
+      <div>
+        <div style="font-size:11px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--lime-d);margin-bottom:20px;">Kostenloser Test-Lead</div>
+        <h2 style="font-family:'Space Grotesk',sans-serif;font-size:clamp(32px,4vw,52px);font-weight:700;letter-spacing:-.04em;line-height:.95;color:var(--ink);margin-bottom:20px;">Sehen Sie es.<br><span style="color:var(--lime-d);">Bevor Sie</span><br>entscheiden.</h2>
+        <p style="font-size:15px;color:var(--muted);line-height:1.75;max-width:380px;margin-bottom:36px;">Nennen Sie uns Ihre Zielbranche – wir liefern Ihnen innerhalb von 24 Stunden einen echten, vollständigen Lead als Kostprobe. Kein Risiko. Keine Kosten. Kein Commitment.</p>
+        <div style="display:flex;flex-direction:column;gap:12px;">
+          <div style="display:flex;align-items:center;gap:12px;"><div style="width:6px;height:6px;border-radius:50%;background:var(--lime);flex-shrink:0;"></div><span style="font-size:13px;color:var(--ink);">Echter Entscheider-Kontakt – aus Ihrer Zielbranche</span></div>
+          <div style="display:flex;align-items:center;gap:12px;"><div style="width:6px;height:6px;border-radius:50%;background:var(--lime);flex-shrink:0;"></div><span style="font-size:13px;color:var(--ink);">Vollständiges Dossier + fertige Ansprache</span></div>
+          <div style="display:flex;align-items:center;gap:12px;"><div style="width:6px;height:6px;border-radius:50%;background:var(--lime);flex-shrink:0;"></div><span style="font-size:13px;color:var(--ink);">Lieferung innerhalb von 24 Stunden</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div style="padding:64px 56px;background:#FAFAF8;">
+      <div class="form-wrap">
+        <form id="testLeadForm" style="display:flex;flex-direction:column;gap:14px;">
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+            <div style="display:flex;flex-direction:column;gap:5px;">
+              <label style="font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);">Ihr Name *</label>
+              <input type="text" id="tlName" placeholder="Max Mustermann" required style="height:44px;padding:0 14px;border:1px solid var(--rule);background:#fff;font-family:'Inter',sans-serif;font-size:13px;color:var(--ink);outline:none;transition:border-color .15s;" onfocus="this.style.borderColor='var(--lime-d)'" onblur="this.style.borderColor='var(--rule)'">
+            </div>
+            <div style="display:flex;flex-direction:column;gap:5px;">
+              <label style="font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);">Ihre Position (optional)</label>
+              <input type="text" id="tlPosition" placeholder="Geschäftsführer" style="height:44px;padding:0 14px;border:1px solid var(--rule);background:#fff;font-family:'Inter',sans-serif;font-size:13px;color:var(--ink);outline:none;transition:border-color .15s;" onfocus="this.style.borderColor='var(--lime-d)'" onblur="this.style.borderColor='var(--rule)'">
+            </div>
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+            <div style="display:flex;flex-direction:column;gap:5px;">
+              <label style="font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);">Ihre Firma (optional)</label>
+              <input type="text" id="tlFirma" placeholder="Mustermann GmbH" style="height:44px;padding:0 14px;border:1px solid var(--rule);background:#fff;font-family:'Inter',sans-serif;font-size:13px;color:var(--ink);outline:none;transition:border-color .15s;" onfocus="this.style.borderColor='var(--lime-d)'" onblur="this.style.borderColor='var(--rule)'">
+            </div>
+            <div style="display:flex;flex-direction:column;gap:5px;">
+              <label style="font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);">E-Mail *</label>
+              <input type="email" id="tlEmail" placeholder="max@firma.de" required style="height:44px;padding:0 14px;border:1px solid var(--rule);background:#fff;font-family:'Inter',sans-serif;font-size:13px;color:var(--ink);outline:none;transition:border-color .15s;" onfocus="this.style.borderColor='var(--lime-d)'" onblur="this.style.borderColor='var(--rule)'">
+            </div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:5px;">
+            <label style="font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);">Wunschkandidat / Zielbranche *</label>
+            <input type="text" id="tlBranche" placeholder="z.B. IT-Systemhäuser, Maschinenbau, Steuerberater ..." required style="height:44px;padding:0 14px;border:1px solid var(--rule);background:#fff;font-family:'Inter',sans-serif;font-size:13px;color:var(--ink);outline:none;transition:border-color .15s;" onfocus="this.style.borderColor='var(--lime-d)'" onblur="this.style.borderColor='var(--rule)'">
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+            <div style="display:flex;flex-direction:column;gap:5px;">
+              <label style="font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);">Unternehmensgröße (optional)</label>
+              <select id="tlGroesse" style="height:44px;padding:0 14px;border:1px solid var(--rule);background:#fff;font-family:'Inter',sans-serif;font-size:13px;color:var(--ink);outline:none;appearance:none;cursor:pointer;transition:border-color .15s;" onfocus="this.style.borderColor='var(--lime-d)'" onblur="this.style.borderColor='var(--rule)'">
+                <option value="">Beliebig</option>
+                <option>1–10 Mitarbeitende</option>
+                <option>10–50 Mitarbeitende</option>
+                <option>50–200 Mitarbeitende</option>
+                <option>200+ Mitarbeitende</option>
+              </select>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:5px;">
+              <label style="font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);">Zielregion (optional)</label>
+              <input type="text" id="tlRegion" placeholder="z.B. Baden-Württemberg, DACH ..." style="height:44px;padding:0 14px;border:1px solid var(--rule);background:#fff;font-family:'Inter',sans-serif;font-size:13px;color:var(--ink);outline:none;transition:border-color .15s;" onfocus="this.style.borderColor='var(--lime-d)'" onblur="this.style.borderColor='var(--rule)'">
+            </div>
+          </div>
+          <button type="submit" id="tlSubmit" style="height:52px;background:var(--lime);color:var(--ink);border:none;font-family:'Space Grotesk',sans-serif;font-size:14px;font-weight:700;letter-spacing:.04em;cursor:pointer;transition:opacity .15s;margin-top:8px;">Kostenlosen Test-Lead anfordern →</button>
+          <p style="font-size:11px;color:var(--muted);text-align:center;">Kostenlos · Unverbindlich · Lieferung in 24h</p>
+          <div style="padding-top:20px;border-top:1px solid var(--rule);text-align:center;">
+            <span style="font-size:12px;color:var(--muted);">Lieber direkt sprechen?&nbsp;&nbsp;</span>
+            <a href="https://calendly.com/DEIN-LINK" target="_blank" style="font-size:12px;color:var(--ink);font-weight:600;font-family:'Space Grotesk',sans-serif;text-decoration:none;border-bottom:1px solid var(--lime);padding-bottom:1px;transition:color .15s;" onmouseover="this.style.color='var(--lime-d)'" onmouseout="this.style.color='var(--ink)'">30-Minuten-Gespräch buchen →</a>
+          </div>
+        </form>
+        <div id="tlSuccess">✓ Anfrage erhalten.<br><span style="font-weight:400;font-size:13px;color:var(--muted);">Ihr persönlicher Test-Lead kommt innerhalb von 24 Stunden.</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Scale<b>IQ</b><span>CONSULTING</span></div>
+  <div>© 2026 ScaleIQ Consulting · David Wenningmann i.G.</div>
+  <div style="display:flex;align-items:center;gap:16px;">
+    <a href="impressum.html" style="color:var(--muted);text-decoration:none;font-size:11px;transition:color .15s;" onmouseover="this.style.color='var(--ink)'" onmouseout="this.style.color='var(--muted)'">Impressum</a>
+    <span style="color:var(--rule);">·</span>
+    <a href="datenschutz.html" style="color:var(--muted);text-decoration:none;font-size:11px;transition:color .15s;" onmouseover="this.style.color='var(--ink)'" onmouseout="this.style.color='var(--muted)'">Datenschutz</a>
+  </div>
+</footer>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  document.querySelectorAll('.faq-item').forEach(function(item) {
+    item.addEventListener('click', function() { item.classList.toggle('open'); });
+  });
+
+  var form = document.getElementById('testLeadForm');
+  if (form) {
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      var btn = document.getElementById('tlSubmit');
+      var success = document.getElementById('tlSuccess');
+      btn.textContent = 'Wird gesendet...';
+      btn.style.opacity = '0.7';
+      setTimeout(function() {
+        form.style.opacity = '0';
+        setTimeout(function() {
+          form.style.display = 'none';
+          success.style.display = 'block';
+          success.offsetHeight;
+          success.style.opacity = '1';
+        }, 300);
+      }, 800);
+    });
+  }
+});
+</script>
+
+</body>
+</html>

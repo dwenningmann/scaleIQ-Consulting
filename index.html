@@ -456,7 +456,7 @@ footer { padding: 22px 48px 22px 20px; display: flex; align-items: center; justi
 
     <div style="padding:64px 56px;background:#FAFAF8;">
       <div class="form-wrap">
-        <form id="testLeadForm" name="testlead" data-netlify="true" netlify-honeypot="bot-field" style="display:flex;flex-direction:column;gap:14px;">
+        <form id="testLeadForm" name="testlead" data-netlify="true" netlify-honeypot="bot-field" action="/danke.html" style="display:flex;flex-direction:column;gap:14px;">
           <input type="hidden" name="form-name" value="testlead">
           <input name="bot-field" style="display:none">
           <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
@@ -532,20 +532,10 @@ document.addEventListener('DOMContentLoaded', function() {
   var form = document.getElementById('testLeadForm');
   if (form) {
     form.addEventListener('submit', function(e) {
-      e.preventDefault();
       var btn = document.getElementById('tlSubmit');
-      var success = document.getElementById('tlSuccess');
       btn.textContent = 'Wird gesendet...';
       btn.style.opacity = '0.7';
-      setTimeout(function() {
-        form.style.opacity = '0';
-        setTimeout(function() {
-          form.style.display = 'none';
-          success.style.display = 'block';
-          success.offsetHeight;
-          success.style.opacity = '1';
-        }, 300);
-      }, 800);
+      // Let Netlify handle the actual submission - no e.preventDefault()
     });
   }
 });

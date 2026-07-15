@@ -456,7 +456,9 @@ footer { padding: 22px 48px 22px 20px; display: flex; align-items: center; justi
 
     <div style="padding:64px 56px;background:#FAFAF8;">
       <div class="form-wrap">
-        <form id="testLeadForm" style="display:flex;flex-direction:column;gap:14px;">
+        <form id="testLeadForm" name="testlead" data-netlify="true" netlify-honeypot="bot-field" style="display:flex;flex-direction:column;gap:14px;">
+          <input type="hidden" name="form-name" value="testlead">
+          <input name="bot-field" style="display:none">
           <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
             <div style="display:flex;flex-direction:column;gap:5px;">
               <label style="font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);">Ihr Name *</label>

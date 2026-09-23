@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Welcome Deal – ScaleIQ Consulting</title>
+<meta name="description" content="Der Welcome Deal von ScaleIQ: 3 Monate, 20 hochqualifizierte Entscheider-Dossiers pro Monat – zum Einstiegspreis, 40 % günstiger. Ohne langen Vertrag, ohne Risiko.">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#0C0C0A">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="ScaleIQ Consulting">
+<meta property="og:title" content="Welcome Deal – 20 Dossiers, 40 % günstiger.">
+<meta property="og:description" content="3 Monate zum Kennenlernen: die volle Leistung zum Einstiegspreis. Ohne langen Vertrag, ohne Risiko.">
+<meta property="og:url" content="https://scaleiq-consulting.de/welcome">
+<meta property="og:image" content="https://scaleiq-consulting.de/og-image.png">
+<link rel="canonical" href="https://scaleiq-consulting.de/welcome">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{--ink:#0C0C0A;--paper:#FAFAF8;--mid:#1A1A18;--muted:#6B6B68;--rule:#E0E0DC;--lime:#C8F135;--lime-d:#8faa24;}
+html{scroll-behavior:smooth;}
+body{font-family:'Inter',sans-serif;background:var(--paper);color:var(--ink);-webkit-font-smoothing:antialiased;overflow-x:hidden;}
+.radar-line{position:fixed;left:0;top:0;bottom:0;width:3px;background:linear-gradient(to bottom,var(--lime) 0%,rgba(200,241,53,.3) 40%,transparent 100%);z-index:200;}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;height:56px;display:flex;align-items:center;justify-content:space-between;padding:0 48px 0 20px;background:rgba(250,250,248,.94);backdrop-filter:blur(16px);border-bottom:1px solid var(--rule);}
+.logo-wrap{display:flex;flex-direction:column;line-height:1;padding-left:16px;}
+.logo-main{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:20px;letter-spacing:-.02em;color:var(--ink);}
+.logo-main b{color:var(--lime-d);}
+.logo-sub{font-family:'Space Grotesk',sans-serif;font-weight:500;font-size:9px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);margin-top:1px;}
+.nav-back{font-family:'Space Grotesk',sans-serif;font-size:12px;font-weight:600;color:var(--muted);text-decoration:none;}
+.nav-back:hover{color:var(--ink);}
+.wrap{padding-top:56px;display:grid;grid-template-columns:1fr 460px;min-height:100vh;border-bottom:1px solid var(--rule);}
+.offer{padding:64px 56px 64px 64px;border-right:1px solid var(--rule);display:flex;flex-direction:column;justify-content:center;}
+.badge{display:inline-block;background:var(--lime);color:var(--ink);font-family:'Space Grotesk',sans-serif;font-size:11px;font-weight:700;letter-spacing:.04em;padding:6px 12px;border-radius:20px;margin-bottom:24px;width:fit-content;}
+h1{font-family:'Space Grotesk',sans-serif;font-size:clamp(34px,4.4vw,56px);font-weight:700;line-height:.98;letter-spacing:-.03em;margin-bottom:20px;}
+h1 .lime{color:var(--lime-d);}
+.lead{font-size:16px;color:var(--muted);line-height:1.65;max-width:460px;margin-bottom:30px;}
+.pricebox{background:var(--ink);border-radius:16px;padding:26px 28px;display:flex;justify-content:space-between;align-items:flex-end;gap:16px;flex-wrap:wrap;margin-bottom:30px;}
+.pricebox .now{font-family:'Space Grotesk',sans-serif;font-size:34px;font-weight:700;color:var(--lime);line-height:1;}
+.pricebox .meta{font-size:12px;color:rgba(255,255,255,.45);margin-top:8px;}
+.pricebox .save{text-align:right;}
+.pricebox .old{color:rgba(255,255,255,.4);text-decoration:line-through;font-size:14px;}
+.pricebox .off{font-family:'Space Grotesk',sans-serif;font-size:26px;font-weight:700;color:var(--lime);line-height:1.1;}
+.pricebox .savemeta{font-size:11px;color:rgba(255,255,255,.45);}
+.plist{list-style:none;display:flex;flex-direction:column;gap:11px;margin-bottom:26px;}
+.plist li{display:flex;align-items:flex-start;gap:12px;font-size:14px;color:var(--ink);line-height:1.5;}
+.plist .d{width:7px;height:7px;border-radius:50%;background:var(--lime);flex-shrink:0;margin-top:6px;}
+.chips{display:flex;flex-wrap:wrap;gap:8px;}
+.chip{font-family:'Space Grotesk',sans-serif;font-size:11px;font-weight:600;color:var(--lime-d);background:#F2FAD0;border-radius:20px;padding:6px 12px;}
+.formcol{padding:64px 56px;background:#F5F5F3;display:flex;flex-direction:column;justify-content:center;}
+.formcol h2{font-family:'Space Grotesk',sans-serif;font-size:22px;font-weight:700;letter-spacing:-.02em;margin-bottom:4px;}
+.formcol .sub{font-size:13.5px;color:var(--muted);margin-bottom:22px;line-height:1.5;}
+form{display:flex;flex-direction:column;gap:12px;}
+form .row{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+label.fl{font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:5px;display:block;}
+input{width:100%;height:46px;padding:0 14px;border:1px solid var(--rule);background:#fff;font-family:'Inter',sans-serif;font-size:13px;color:var(--ink);outline:none;transition:border-color .15s;}
+input:focus{border-color:var(--lime-d);}
+.consent{display:flex;gap:10px;align-items:flex-start;font-size:12px;color:var(--muted);line-height:1.5;margin:4px 0 4px;}
+.consent input{width:16px;height:16px;flex:0 0 auto;margin-top:2px;accent-color:var(--lime-d);}
+button{height:52px;background:var(--lime);color:var(--ink);border:none;font-family:'Space Grotesk',sans-serif;font-size:14px;font-weight:700;letter-spacing:.02em;cursor:pointer;margin-top:6px;}
+button:hover{opacity:.88;}
+.fine{font-size:11px;color:var(--muted);text-align:center;}
+.trust-strip{display:flex;flex-wrap:wrap;background:var(--mid);border-bottom:1px solid var(--rule);}
+.trust-item{flex:1 1 200px;padding:16px 24px;display:flex;align-items:center;gap:10px;border-right:1px solid rgba(255,255,255,.08);color:rgba(255,255,255,.7);font-size:12.5px;}
+.trust-item:last-child{border-right:none;}
+.trust-item b{color:#fff;font-weight:600;}
+.trust-dot{width:7px;height:7px;border-radius:50%;background:var(--lime);flex-shrink:0;}
+footer{padding:22px 48px 22px 20px;display:flex;align-items:center;justify-content:space-between;font-size:11px;color:var(--muted);border-top:1px solid var(--rule);flex-wrap:wrap;gap:10px;}
+.footer-logo{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:14px;color:var(--ink);padding-left:16px;}
+.footer-logo b{color:var(--lime-d);}
+.footer-logo span{font-size:9px;letter-spacing:.15em;color:var(--muted);display:block;margin-top:1px;}
+@media(max-width:860px){
+  .radar-line{display:none;}
+  nav{padding:0 12px;}.logo-sub{display:none;}
+  .wrap{grid-template-columns:1fr;}
+  .offer{padding:32px 20px;border-right:none;border-bottom:1px solid var(--rule);}
+  .formcol{padding:32px 20px;}
+  form .row{grid-template-columns:1fr;gap:12px;}
+  .trust-item{flex:1 1 100%;border-right:none;border-bottom:1px solid rgba(255,255,255,.08);}
+  footer{padding:16px 20px;flex-direction:column;text-align:center;}
+}
+</style>
+</head>
+<body>
+<div class="radar-line"></div>
+<nav>
+  <div class="logo-wrap"><div class="logo-main">Scale<b>IQ</b></div><div class="logo-sub">Consulting</div></div>
+  <a href="/" class="nav-back">← Zur Startseite</a>
+</nav>
+
+<div class="wrap">
+  <!-- ANGEBOT -->
+  <div class="offer">
+    <span class="badge">WELCOME DEAL · NUR ZUM KENNENLERNEN</span>
+    <h1>Lernen wir<br>uns kennen.<br><span class="lime">40 % günstiger.</span></h1>
+    <p class="lead">Drei Monate, die volle Leistung — 20 hochqualifizierte Entscheider-Dossiers pro Monat, fertig zur persönlichen Ansprache. Ohne langen Vertrag, ohne Risiko.</p>
+    <div class="pricebox">
+      <div>
+        <div class="now">1.490&nbsp;€/Monat</div>
+        <div class="meta">3 Monate · 20 Dossiers pro Monat · zzgl. USt</div>
+      </div>
+      <div class="save">
+        <div class="old">statt 2.490&nbsp;€</div>
+        <div class="off">−40&nbsp;%</div>
+        <div class="savemeta">1.000&nbsp;€/Monat gespart</div>
+      </div>
+    </div>
+    <ul class="plist">
+      <li><span class="d"></span><span>20 Entscheider-Dossiers mit Fit-Score, Killer-Hook und verifizierter Direktadresse</span></li>
+      <li><span class="d"></span><span>Fertige, persönliche Ansprache für Mail &amp; LinkedIn — inklusive 3 terminierter Follow-ups</span></li>
+      <li><span class="d"></span><span>Das Copilot-System: sehen, freigeben, senden — komplett vom Handy</span></li>
+    </ul>
+    <div class="chips">
+      <span class="chip">Nur 3 Monate</span>
+      <span class="chip">Keine automatische Verlängerung</span>
+      <span class="chip">Kein Setup</span>
+      <span class="chip">Startklar in Woche 1</span>
+      <span class="chip">Einmalig pro Kunde</span>
+    </div>
+  </div>
+
+  <!-- FORMULAR -->
+  <div class="formcol">
+    <h2>Angebot sichern.</h2>
+    <p class="sub">Nur noch Ihre Daten — wir melden uns kurzfristig mit Ihrem persönlichen Angebot.</p>
+    <form name="welcome-deal" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/danke.html">
+      <input type="hidden" name="form-name" value="welcome-deal">
+      <p hidden><label>Bitte leer lassen: <input name="bot-field"></label></p>
+      <div><label class="fl">Firma *</label><input name="firma" placeholder="Mustermann GmbH" required></div>
+      <div class="row">
+        <div><label class="fl">Vorname *</label><input name="vorname" placeholder="Max" required></div>
+        <div><label class="fl">Nachname *</label><input name="nachname" placeholder="Mustermann" required></div>
+      </div>
+      <div><label class="fl">E-Mail *</label><input type="email" name="email" placeholder="max@firma.de" required></div>
+      <div><label class="fl">Mobilnummer (optional)</label><input type="tel" name="mobil" placeholder="+49 …"></div>
+      <label class="consent"><input type="checkbox" name="consent" value="ja" required><span>Ich bin mit einer Kontaktaufnahme im Rahmen des Angebots einverstanden.</span></label>
+      <button type="submit">Jetzt Angebot sichern →</button>
+      <p class="fine">Unverbindlich · keine automatische Verlängerung</p>
+    </form>
+  </div>
+</div>
+
+<!-- TRUST -->
+<div class="trust-strip">
+  <div class="trust-item"><span class="trust-dot"></span><span><b>DSGVO-konform</b> · rechtssicher</span></div>
+  <div class="trust-item"><span class="trust-dot"></span><span><b>Einzelversand</b> aus Ihrem Postfach</span></div>
+  <div class="trust-item"><span class="trust-dot"></span><span><b>Kein Massenversand</b> · Sie bleiben der Pilot</span></div>
+  <div class="trust-item"><span class="trust-dot"></span><span><b>Verifizierte Adressen</b> · kaum Rückläufer</span></div>
+</div>
+
+<footer>
+  <div class="footer-logo">Scale<b>IQ</b><span>CONSULTING</span></div>
+  <div>© 2026 ScaleIQ Consulting · David Wenningmann</div>
+  <div style="display:flex;align-items:center;gap:16px;">
+    <a href="impressum.html" style="color:var(--muted);text-decoration:none;font-size:11px;">Impressum</a>
+    <span style="color:var(--rule);">·</span>
+    <a href="datenschutz.html" style="color:var(--muted);text-decoration:none;font-size:11px;">Datenschutz</a>
+  </div>
+</footer>
+</body>
+</html>

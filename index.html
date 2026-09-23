@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ScaleIQ Consulting – Akquise, die sich nicht nach Akquise anfühlt.</title>
-<meta name="description" content="Souveräne B2B-Neukundengewinnung für den Mittelstand: 20 hochqualifizierte Entscheider-Leads pro Monat – mit fertiger, persönlicher Ansprache für Mail und LinkedIn. Souverän, vorbereitet, auf Augenhöhe.">
+<title>B2B-Neukundengewinnung für den Mittelstand · ScaleIQ Consulting</title>
+<meta name="description" content="20 hochqualifizierte Entscheider-Leads pro Monat mit fertiger, persönlicher Ansprache für Mail & LinkedIn – live recherchiert, DSGVO-konform. Gratis Test-Dossier in 24 h.">
 <meta name="robots" content="index, follow">
 <meta name="theme-color" content="#0C0C0A">
 <!-- Open Graph (LinkedIn, Facebook, WhatsApp …) -->
@@ -46,7 +46,13 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; height: 56px; di
 .nav-cta { height: 36px; padding: 0 20px; background: var(--ink); color: var(--paper); font-family: 'Space Grotesk', sans-serif; font-size: 12px; font-weight: 600; letter-spacing: .04em; text-decoration: none; display: inline-flex; align-items: center; gap: 6px; transition: background .15s; }
 .nav-cta:hover { background: var(--lime); color: var(--ink); }
 /* HERO */
-.hero { padding-top: 56px; min-height: 100vh; display: grid; grid-template-columns: 1fr 420px; border-bottom: 1px solid var(--rule); }
+.deal-ribbon { position: fixed; top: 56px; left: 0; right: 0; z-index: 99; height: 40px; display: flex; align-items: center; justify-content: center; gap: 16px; background: var(--ink); border-bottom: 1px solid rgba(200,241,53,.28); padding: 0 20px; overflow: hidden; }
+.deal-ribbon .dr-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--lime); flex-shrink: 0; animation: radar-pulse 2.2s ease-in-out infinite; }
+.deal-ribbon .dr-txt { font-family: 'Space Grotesk', sans-serif; font-size: 12.5px; font-weight: 500; letter-spacing: .01em; color: rgba(255,255,255,.82); white-space: nowrap; }
+.deal-ribbon .dr-txt b { color: var(--lime); font-weight: 700; }
+.deal-ribbon .dr-link { font-family: 'Space Grotesk', sans-serif; font-size: 12px; font-weight: 700; letter-spacing: .02em; color: var(--ink); background: var(--lime); text-decoration: none; padding: 5px 13px; border-radius: 20px; white-space: nowrap; flex-shrink: 0; transition: opacity .15s; }
+.deal-ribbon .dr-link:hover { opacity: .85; }
+.hero { padding-top: 96px; min-height: 100vh; display: grid; grid-template-columns: 1fr 420px; border-bottom: 1px solid var(--rule); }
 .hero-l { padding: 72px 56px 72px 64px; border-right: 1px solid var(--rule); display: flex; flex-direction: column; justify-content: space-between; }
 .hero-eyebrow { font-size: 11px; font-weight: 500; letter-spacing: .2em; text-transform: uppercase; color: var(--muted); margin-bottom: 32px; display: flex; align-items: center; gap: 10px; }
 .hero-eyebrow::before { content: ''; width: 20px; height: 2px; background: var(--lime); display: block; }
@@ -114,7 +120,11 @@ footer { padding: 22px 48px 22px 20px; display: flex; align-items: center; justi
   nav { padding: 0 12px; gap: 8px; }
   .logo-sub { display: none; }
   .nav-cta { font-size: 11px; padding: 0 12px; height: 32px; white-space: nowrap; }
-  .hero { grid-template-columns: 1fr; min-height: auto; }
+  .deal-ribbon { gap: 10px; padding: 0 12px; height: 38px; }
+  .deal-ribbon .dr-txt { font-size: 11.5px; }
+  .deal-ribbon .dr-more { display: none; }
+  .deal-ribbon .dr-link { font-size: 11px; padding: 5px 11px; }
+  .hero { grid-template-columns: 1fr; min-height: auto; padding-top: 94px; }
   .hero-l { padding: 36px 20px 32px; border-right: none; border-bottom: 1px solid var(--rule); }
   .hero-r { padding: 28px 20px; }
   h1 { font-size: clamp(34px, 9vw, 48px); margin-bottom: 20px; }
@@ -198,6 +208,18 @@ table.cmp tr:last-child td { border-bottom: none; }
   .funnel{padding:20px 20px;}
 }
 </style>
+<!-- Strukturierte Daten (SEO) -->
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"ProfessionalService","name":"ScaleIQ Consulting","url":"https://scaleiq-consulting.de/","image":"https://scaleiq-consulting.de/og-image.png","description":"B2B-Neukundengewinnung fuer den Mittelstand: 20 hochqualifizierte Entscheider-Leads pro Monat mit fertiger, persoenlicher Ansprache fuer Mail und LinkedIn.","areaServed":"DE","serviceType":"B2B-Leadgenerierung / Neukundengewinnung","slogan":"Wir liefern Dossiers, keine Leads.","founder":{"@type":"Person","name":"David Wenningmann"}}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"Ist das DSGVO-konform?","acceptedAnswer":{"@type":"Answer","text":"Ja. Wir liefern recherchierte Informationen und Textvorschlaege; Sie versenden einzeln aus Ihrem eigenen Postfach. Kein Massenversand, Opt-out inklusive, AVV ist Teil des Vertrags."}},
+{"@type":"Question","name":"Was, wenn keiner reagiert?","acceptedAnswer":{"@type":"Answer","text":"Drei terminierte Follow-ups und die automatische Reaktivierung holen Kontakte mit frischem Anlass zurueck - kein Lead verpufft."}},
+{"@type":"Question","name":"Wie schnell sehe ich etwas?","acceptedAnswer":{"@type":"Answer","text":"Ihr kostenloses Test-Dossier kommt innerhalb von 24 Stunden. Als Kunde liegen die ersten fertigen Dossiers schon in Woche 1 bereit."}},
+{"@type":"Question","name":"Bin ich lange gebunden?","acceptedAnswer":{"@type":"Answer","text":"Zum Kennenlernen gibt es einen Welcome Deal ueber nur 3 Monate, ohne automatische Verlaengerung."}}
+]}
+</script>
 </head>
 <body>
 <div class="radar-line"></div>
@@ -212,6 +234,12 @@ table.cmp tr:last-child td { border-bottom: none; }
     <a href="#kontakt" class="nav-cta">Kostenloses Dossier anfordern →</a>
   </div>
 </nav>
+<!-- DEAL-LEISTE -->
+<a href="/welcome" class="deal-ribbon" style="text-decoration:none;">
+  <span class="dr-dot"></span>
+  <span class="dr-txt"><b>Welcome Deal</b><span class="dr-more"> · 20 Dossiers zum Kennenlernen — 40 % günstiger</span></span>
+  <span class="dr-link">Ansehen →</span>
+</a>
 <!-- HERO -->
 <section class="hero">
   <div class="hero-l">

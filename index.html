@@ -45,6 +45,7 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; height: 56px; di
 .logo-sub { font-family: 'Space Grotesk', sans-serif; font-weight: 500; font-size: 9px; letter-spacing: .22em; text-transform: uppercase; color: var(--muted); margin-top: 1px; }
 .nav-cta { height: 36px; padding: 0 20px; background: var(--ink); color: var(--paper); font-family: 'Space Grotesk', sans-serif; font-size: 12px; font-weight: 600; letter-spacing: .04em; text-decoration: none; display: inline-flex; align-items: center; gap: 6px; transition: background .15s; }
 .nav-cta:hover { background: var(--lime); color: var(--ink); }
+.nav-cta-short { display: none; }
 /* HERO */
 .deal-ribbon { position: fixed; top: 56px; left: 0; right: 0; z-index: 99; height: 40px; display: flex; align-items: center; justify-content: center; gap: 16px; background: var(--ink); border-bottom: 1px solid rgba(200,241,53,.28); padding: 0 20px; overflow: hidden; }
 .deal-ribbon .dr-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--lime); flex-shrink: 0; animation: radar-pulse 2.2s ease-in-out infinite; }
@@ -119,7 +120,10 @@ footer { padding: 22px 48px 22px 20px; display: flex; align-items: center; justi
   .radar-line { display: none; }
   nav { padding: 0 12px; gap: 8px; }
   .logo-sub { display: none; }
-  .nav-cta { font-size: 11px; padding: 0 12px; height: 32px; white-space: nowrap; }
+  .nav-welcome { display: none; }
+  .nav-cta-full { display: none; }
+  .nav-cta-short { display: inline; }
+  .nav-cta { font-size: 11px; padding: 0 14px; height: 32px; white-space: nowrap; }
   .deal-ribbon { gap: 10px; padding: 0 12px; height: 38px; }
   .deal-ribbon .dr-txt { font-size: 11.5px; }
   .deal-ribbon .dr-more { display: none; }
@@ -161,7 +165,21 @@ footer { padding: 22px 48px 22px 20px; display: flex; align-items: center; justi
   #tlSuccess { position: static; transform: none; margin-top: 20px; }
   #testLeadForm button { font-size: 13px; }
   footer { padding: 16px 20px; flex-direction: column; gap: 8px; text-align: center; }
-  table.cmp { min-width: 620px; }
+  /* Vergleich: Tabelle → gestapelte Karten (kein horizontales Scrollen) */
+  .cmp-wrap { overflow: visible; }
+  table.cmp { min-width: 0; display: block; }
+  table.cmp thead { display: none; }
+  table.cmp tbody { display: block; }
+  table.cmp tr { display: block; border: 1px solid var(--rule); border-radius: 12px; margin-bottom: 14px; overflow: hidden; }
+  table.cmp td { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 11px 16px; border-bottom: 1px solid var(--rule); font-size: 13px; }
+  table.cmp td::before { content: attr(data-col); font-family: 'Space Grotesk', sans-serif; font-size: 10.5px; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); font-weight: 600; flex-shrink: 0; }
+  table.cmp td.crit { display: block; background: var(--ink); color: #fff; font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 14px; padding: 13px 16px; }
+  table.cmp td.crit::before { content: none; }
+  table.cmp td.us { background: rgba(200,241,53,.16); }
+  table.cmp td.us::before { color: var(--lime-d); }
+  table.cmp tr td:last-child { border-bottom: none; }
+  table.cmp tr:last-child td { border-bottom: 1px solid var(--rule); }
+  table.cmp tr:last-child td:last-child { border-bottom: none; }
   .usp-close { padding: 16px 20px !important; font-size: 13px !important; }
 }
 /* USP: Vergleichstabelle + Abschluss-Zeilen */
@@ -230,8 +248,8 @@ table.cmp tr:last-child td { border-bottom: none; }
     <div class="logo-sub">Consulting</div>
   </div>
   <div style="display:flex;align-items:center;gap:18px;">
-    <a href="/welcome" style="font-family:'Space Grotesk',sans-serif;font-size:12px;font-weight:600;letter-spacing:.02em;color:var(--muted);text-decoration:none;white-space:nowrap;" onmouseover="this.style.color='var(--ink)'" onmouseout="this.style.color='var(--muted)'">Kennenlern-Angebot</a>
-    <a href="#kontakt" class="nav-cta">Kostenloses Dossier anfordern →</a>
+    <a href="/welcome" class="nav-welcome" style="font-family:'Space Grotesk',sans-serif;font-size:12px;font-weight:600;letter-spacing:.02em;color:var(--muted);text-decoration:none;white-space:nowrap;" onmouseover="this.style.color='var(--ink)'" onmouseout="this.style.color='var(--muted)'">Kennenlern-Angebot</a>
+    <a href="#kontakt" class="nav-cta"><span class="nav-cta-full">Kostenloses Dossier anfordern</span><span class="nav-cta-short">Gratis Dossier</span> →</a>
   </div>
 </nav>
 <!-- DEAL-LEISTE -->
@@ -301,12 +319,12 @@ table.cmp tr:last-child td { border-bottom: none; }
         <tr><th>&nbsp;</th><th>Interner SDR</th><th>Datenbank</th><th>KI-Autopilot</th><th class="us">ScaleIQ</th></tr>
       </thead>
       <tbody>
-        <tr><td class="crit">Aktualität der Daten</td><td>aktuell</td><td>veraltet</td><td>gemischt</td><td class="us">live am Liefertag</td></tr>
-        <tr><td class="crit">Persönliche Ansprache</td><td>ja</td><td>nein</td><td>schein-persönlich</td><td class="us">belegt persönlich</td></tr>
-        <tr><td class="crit">Versandfertig geliefert</td><td>nein</td><td>nein</td><td>ja</td><td class="us">ja</td></tr>
-        <tr><td class="crit">Real bearbeitbare Menge</td><td>gering</td><td>überfordert</td><td>zu viel</td><td class="us">20 · schaffbar</td></tr>
-        <tr><td class="crit">Zustellbarkeit</td><td>ok</td><td>viele Rückläufer</td><td>riskant</td><td class="us">verifiziert</td></tr>
-        <tr><td class="crit">Ihr Aufwand</td><td>~50 Std.</td><td>hoch</td><td>Kontrollverlust</td><td class="us">ein Klick</td></tr>
+        <tr><td class="crit">Aktualität der Daten</td><td data-col="Interner SDR">aktuell</td><td data-col="Datenbank">veraltet</td><td data-col="KI-Autopilot">gemischt</td><td class="us" data-col="ScaleIQ">live am Liefertag</td></tr>
+        <tr><td class="crit">Persönliche Ansprache</td><td data-col="Interner SDR">ja</td><td data-col="Datenbank">nein</td><td data-col="KI-Autopilot">schein-persönlich</td><td class="us" data-col="ScaleIQ">belegt persönlich</td></tr>
+        <tr><td class="crit">Versandfertig geliefert</td><td data-col="Interner SDR">nein</td><td data-col="Datenbank">nein</td><td data-col="KI-Autopilot">ja</td><td class="us" data-col="ScaleIQ">ja</td></tr>
+        <tr><td class="crit">Real bearbeitbare Menge</td><td data-col="Interner SDR">gering</td><td data-col="Datenbank">überfordert</td><td data-col="KI-Autopilot">zu viel</td><td class="us" data-col="ScaleIQ">20 · schaffbar</td></tr>
+        <tr><td class="crit">Zustellbarkeit</td><td data-col="Interner SDR">ok</td><td data-col="Datenbank">viele Rückläufer</td><td data-col="KI-Autopilot">riskant</td><td class="us" data-col="ScaleIQ">verifiziert</td></tr>
+        <tr><td class="crit">Ihr Aufwand</td><td data-col="Interner SDR">~50 Std.</td><td data-col="Datenbank">hoch</td><td data-col="KI-Autopilot">Kontrollverlust</td><td class="us" data-col="ScaleIQ">ein Klick</td></tr>
       </tbody>
     </table>
   </div>

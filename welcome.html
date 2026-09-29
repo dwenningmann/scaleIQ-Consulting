@@ -11,29 +11,26 @@
 <meta property="og:site_name" content="ScaleIQ Consulting">
 <meta property="og:title" content="Welcome Deal – 20 Dossiers, 40 % günstiger.">
 <meta property="og:description" content="3 Monate zum Kennenlernen: die volle Leistung zum Einstiegspreis. Ohne langen Vertrag, ohne Risiko.">
-<meta property="og:url" content=https://scaleiq-consulting.de/welcome>
-<meta property="og:image" content=https://scaleiq-consulting.de/og-image.png>
-<link rel="canonical" href=https://scaleiq-consulting.de/welcome>
+<meta property="og:url" content="https://scaleiq-consulting.de/welcome">
+<meta property="og:image" content="https://scaleiq-consulting.de/og-image.png">
+<link rel="canonical" href="https://scaleiq-consulting.de/welcome">
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
-<link rel="preconnect" href=https://fonts.googleapis.com>
-<link href=https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500&display=swap rel="stylesheet">
-<!-- NEU: Hero-Bild vorladen -->
-<link rel="preload" as="image" type="image/webp" media="(min-width:861px)" imagesrcset="img/tell-desktop-1440.webp 1440w, img/tell-desktop-2880.webp 2880w" imagesizes="100vw">
-<link rel="preload" as="image" type="image/webp" media="(max-width:860px)" imagesrcset="img/tell-mobile-600.webp 600w, img/tell-mobile-1200.webp 1200w" imagesizes="100vw">
-/* ===== NEU: Tell-Hero ===== */
-.tell{position:relative;background:var(--ink);padding-top:56px;overflow:hidden;}
-.tell-text{position:relative;z-index:2;padding:clamp(40px,5vw,80px) 64px 0;max-width:760px;}
-.tell-h{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:clamp(48px,6.4vw,104px);line-height:.95;letter-spacing:-.035em;color:#fff;margin-bottom:clamp(14px,1.6vw,24px);}
-.tell-sub{font-family:'Inter',sans-serif;font-weight:300;font-size:clamp(18px,1.8vw,28px);line-height:1.35;color:rgba(255,255,255,.88);margin-bottom:clamp(20px,2.2vw,32px);}
-.tell-sub span{color:var(--lime);font-weight:400;}
-.tell-cta{display:inline-flex;align-items:center;gap:10px;height:48px;padding:0 22px;background:var(--lime);color:var(--ink);font-family:'Space Grotesk',sans-serif;font-size:14px;font-weight:700;letter-spacing:.02em;text-decoration:none;transition:opacity .15s;}
-.tell-cta:hover{opacity:.88;}
-.tell-img{position:relative;z-index:1;display:block;margin-top:-17vw;}
-.tell-img img{display:block;width:100%;height:auto;}
-#angebot{scroll-margin-top:56px;}
-/* ===== /Tell-Hero ===== */
- 
-.wrap{display:grid;grid-template-columns:1fr 460px;min-height:100vh;border-bottom:1px solid var(--rule);}
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{--ink:#0C0C0A;--paper:#FAFAF8;--mid:#1A1A18;--muted:#6B6B68;--rule:#E0E0DC;--lime:#C8F135;--lime-d:#8faa24;}
+html{scroll-behavior:smooth;}
+body{font-family:'Inter',sans-serif;background:var(--paper);color:var(--ink);-webkit-font-smoothing:antialiased;overflow-x:hidden;}
+.radar-line{position:fixed;left:0;top:0;bottom:0;width:3px;background:linear-gradient(to bottom,var(--lime) 0%,rgba(200,241,53,.3) 40%,transparent 100%);z-index:200;}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;height:56px;display:flex;align-items:center;justify-content:space-between;padding:0 48px 0 20px;background:rgba(250,250,248,.94);backdrop-filter:blur(16px);border-bottom:1px solid var(--rule);}
+.logo-wrap{display:flex;flex-direction:column;line-height:1;padding-left:16px;}
+.logo-main{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:20px;letter-spacing:-.02em;color:var(--ink);}
+.logo-main b{color:var(--lime-d);}
+.logo-sub{font-family:'Space Grotesk',sans-serif;font-weight:500;font-size:9px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);margin-top:1px;}
+.nav-back{font-family:'Space Grotesk',sans-serif;font-size:12px;font-weight:600;color:var(--muted);text-decoration:none;}
+.nav-back:hover{color:var(--ink);}
+.wrap{padding-top:56px;display:grid;grid-template-columns:1fr 460px;min-height:100vh;border-bottom:1px solid var(--rule);}
 .offer{padding:72px 56px 72px 64px;border-right:1px solid var(--rule);display:flex;flex-direction:column;justify-content:center;}
 .badge{display:inline-flex;align-items:center;gap:7px;background:var(--lime);color:var(--ink);font-family:'Space Grotesk',sans-serif;font-size:11px;font-weight:700;letter-spacing:.04em;padding:7px 14px;border-radius:20px;margin-bottom:26px;width:fit-content;}
 .badge .pin{width:6px;height:6px;border-radius:50%;background:var(--ink);animation:blink 1.8s ease-in-out infinite;}
@@ -89,8 +86,6 @@ footer{padding:22px 48px 22px 20px;display:flex;align-items:center;justify-conte
 @media(max-width:860px){
   .radar-line{display:none;}
   nav{padding:0 12px;}.logo-sub{display:none;}
-  .tell-text{padding:32px 20px 0;}
-  .tell-img{margin-top:-14vw;}
   .wrap{grid-template-columns:1fr;}
   .offer{padding:32px 20px;border-right:none;border-bottom:1px solid var(--rule);}
   .formcol{padding:32px 20px;}
@@ -106,21 +101,8 @@ footer{padding:22px 48px 22px 20px;display:flex;align-items:center;justify-conte
   <div class="logo-wrap"><div class="logo-main">Scale<b>IQ</b></div><div class="logo-sub">Consulting</div></div>
   <a href="/" class="nav-back">← Zur Startseite</a>
 </nav>
- 
-<!-- NEU: TELL-HERO -->
-<section class="tell" aria-label="Einstieg">
-  <div class="tell-text">
-    <p class="tell-h">Schön wär’s.</p>
-    <p class="tell-sub">Im Vertrieb ist das Ziel kleiner.<br>Deshalb zählen nicht mehr Pfeile,<br>sondern <span>bessere Schüsse</span>.</p>
-    <a href="#angebot" class="tell-cta">Zum Angebot <span aria-hidden="true">↓</span></a>
-  </div>
-  <picture class="tell-img">
-    <source media="(max-width:860px)" type="image/webp" srcset="img/tell-mobile-600.webp 600w, img/tell-mobile-1200.webp 1200w" sizes="100vw">
-    <img src="img/tell-desktop-1440.webp" srcset="img/tell-desktop-1440.webp 1440w, img/tell-desktop-2880.webp 2880w" sizes="100vw" width="2880" height="1400" fetchpriority="high" alt="Collage: Junge mit übergroßem Apfel auf dem Kopf vor Alpenpanorama, beschriftet mit „Tell Junior“">
-  </picture>
-</section>
- 
-<div class="wrap" id="angebot">
+
+<div class="wrap">
   <!-- ANGEBOT -->
   <div class="offer">
     <span class="badge"><span class="pin"></span>EINMALIG · NUR ZUM KENNENLERNEN</span>
@@ -140,7 +122,7 @@ footer{padding:22px 48px 22px 20px;display:flex;align-items:center;justify-conte
         <div class="savemeta">1.000&nbsp;€/Monat · 3.000&nbsp;€ gespart</div>
       </div>
     </div>
- 
+
     <div class="seclabel">Das bekommen Sie — jeden Monat</div>
     <ul class="feats">
       <li class="feat"><span class="dot"></span><div><div class="ft">20 hochqualifizierte Entscheider-Dossiers</div><div class="fd">Fit-Score, Killer-Hook, verifizierte Direktadresse — nur, was wirklich passt.</div></div></li>
@@ -148,7 +130,7 @@ footer{padding:22px 48px 22px 20px;display:flex;align-items:center;justify-conte
       <li class="feat"><span class="dot"></span><div><div class="ft">3 Follow-ups, vorformuliert &amp; terminiert</div><div class="fd">Kein Lead stirbt — automatische Reaktivierung inklusive.</div></div></li>
       <li class="feat"><span class="dot"></span><div><div class="ft">Das Copilot-System</div><div class="fd">Sehen, freigeben, senden — ruhig, kontrolliert, komplett vom Handy.</div></div></li>
     </ul>
- 
+
     <div class="seclabel">Risikofrei starten</div>
     <div class="chips">
       <span class="chip">Nur 3 Monate</span>
@@ -157,13 +139,13 @@ footer{padding:22px 48px 22px 20px;display:flex;align-items:center;justify-conte
       <span class="chip">Startklar in Woche 1</span>
       <span class="chip">Einmalig pro Kunde</span>
     </div>
- 
+
     <div class="closer">
       <div class="c1">Sie lernen uns kennen, wir Sie. Danach entscheiden beide.</div>
       <div class="c2">Der einfachste erste Schritt zu planbarer, souveräner Neukundengewinnung.</div>
     </div>
   </div>
- 
+
   <!-- FORMULAR -->
   <div class="formcol">
     <h2>Angebot sichern.</h2>
@@ -176,7 +158,7 @@ footer{padding:22px 48px 22px 20px;display:flex;align-items:center;justify-conte
         <div><label class="fl">Vorname *</label><input name="vorname" placeholder="Max" required></div>
         <div><label class="fl">Nachname *</label><input name="nachname" placeholder="Mustermann" required></div>
       </div>
-      <div><label class="fl">E-Mail *</label><input type="email" name="email" placeholder=max@firma.de required></div>
+      <div><label class="fl">E-Mail *</label><input type="email" name="email" placeholder="max@firma.de" required></div>
       <div><label class="fl">Mobilnummer (optional)</label><input type="tel" name="mobil" placeholder="+49 …"></div>
       <label class="consent"><input type="checkbox" name="consent" value="ja" required><span>Ich bin mit einer Kontaktaufnahme im Rahmen des Angebots einverstanden.</span></label>
       <button type="submit">Jetzt Angebot sichern →</button>
@@ -184,7 +166,7 @@ footer{padding:22px 48px 22px 20px;display:flex;align-items:center;justify-conte
     </form>
   </div>
 </div>
- 
+
 <!-- TRUST -->
 <div class="trust-strip">
   <div class="trust-item"><span class="trust-dot"></span><span><b>DSGVO-konform</b> · rechtssicher</span></div>
@@ -192,7 +174,7 @@ footer{padding:22px 48px 22px 20px;display:flex;align-items:center;justify-conte
   <div class="trust-item"><span class="trust-dot"></span><span><b>Kein Massenversand</b> · Sie bleiben der Pilot</span></div>
   <div class="trust-item"><span class="trust-dot"></span><span><b>Verifizierte Adressen</b> · kaum Rückläufer</span></div>
 </div>
- 
+
 <footer>
   <div class="footer-logo">Scale<b>IQ</b><span>CONSULTING</span></div>
   <div>© 2026 ScaleIQ Consulting · David Wenningmann</div>

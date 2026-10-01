@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="de">
 <head>
@@ -26,6 +27,9 @@
 <link rel="alternate icon" href="favicon.ico">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<!-- NEU: Tell-Hero-Bild vorladen -->
+<link rel="preload" as="image" type="image/webp" media="(min-width:861px)" imagesrcset="tell-desktop-1440.webp 1440w, tell-desktop-2880.webp 2880w" imagesizes="100vw">
+<link rel="preload" as="image" type="image/webp" media="(max-width:860px)" imagesrcset="tell-mobile-600.webp 600w, tell-mobile-1200.webp 1200w" imagesizes="100vw">
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 :root {
@@ -53,7 +57,7 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; height: 56px; di
 .deal-ribbon .dr-txt b { color: var(--lime); font-weight: 700; }
 .deal-ribbon .dr-link { font-family: 'Space Grotesk', sans-serif; font-size: 12px; font-weight: 700; letter-spacing: .02em; color: var(--ink); background: var(--lime); text-decoration: none; padding: 5px 13px; border-radius: 20px; white-space: nowrap; flex-shrink: 0; transition: opacity .15s; }
 .deal-ribbon .dr-link:hover { opacity: .85; }
-.hero { padding-top: 96px; min-height: 100vh; display: grid; grid-template-columns: 1fr 420px; border-bottom: 1px solid var(--rule); }
+.hero { padding-top: 0; min-height: 100vh; display: grid; grid-template-columns: 1fr 420px; border-bottom: 1px solid var(--rule); }
 .hero-l { padding: 72px 56px 72px 64px; border-right: 1px solid var(--rule); display: flex; flex-direction: column; justify-content: space-between; }
 .hero-eyebrow { font-size: 11px; font-weight: 500; letter-spacing: .2em; text-transform: uppercase; color: var(--muted); margin-bottom: 32px; display: flex; align-items: center; gap: 10px; }
 .hero-eyebrow::before { content: ''; width: 20px; height: 2px; background: var(--lime); display: block; }
@@ -128,7 +132,7 @@ footer { padding: 22px 48px 22px 20px; display: flex; align-items: center; justi
   .deal-ribbon .dr-txt { font-size: 11.5px; }
   .deal-ribbon .dr-more { display: none; }
   .deal-ribbon .dr-link { font-size: 11px; padding: 5px 11px; }
-  .hero { grid-template-columns: 1fr; min-height: auto; padding-top: 94px; }
+  .hero { grid-template-columns: 1fr; min-height: auto; padding-top: 0; }
   .hero-l { padding: 36px 20px 32px; border-right: none; border-bottom: 1px solid var(--rule); }
   .hero-r { padding: 28px 20px; }
   h1 { font-size: clamp(34px, 9vw, 48px); margin-bottom: 20px; }
@@ -228,6 +232,34 @@ table.cmp tr:last-child td { border-bottom: none; }
   .faq-grid{grid-template-columns:1fr;} .faq-cell{border-right:none!important;border-bottom:1px solid var(--rule)!important;padding:22px 20px;}
   .funnel{padding:20px 20px;}
 }
+
+/* ===== NEU: Tell-Hero ===== */
+.tell{position:relative;background:var(--ink);padding-top:96px;overflow:hidden;}
+.tell-text{position:relative;z-index:2;padding:clamp(40px,5vw,80px) 64px 0;max-width:760px;}
+.tell-h{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:clamp(48px,6.4vw,104px);line-height:.95;letter-spacing:-.035em;color:#fff;margin-bottom:clamp(14px,1.6vw,24px);}
+.tell-sub{font-family:'Inter',sans-serif;font-weight:300;font-size:clamp(18px,1.8vw,28px);line-height:1.35;color:rgba(255,255,255,.88);margin-bottom:clamp(20px,2.2vw,32px);}
+.tell-sub span{color:var(--lime);font-weight:400;}
+.tell-cta{display:inline-flex;align-items:center;gap:10px;height:48px;padding:0 22px;background:var(--lime);color:var(--ink);font-family:'Space Grotesk',sans-serif;font-size:14px;font-weight:700;letter-spacing:.02em;text-decoration:none;transition:opacity .15s;}
+.tell-cta:hover{opacity:.88;}
+.tell-img{position:relative;z-index:1;display:block;margin-top:-17vw;}
+.tell-img img{display:block;width:100%;height:auto;}
+@media(max-width:860px){
+  .tell{padding-top:94px;}
+  .tell-text{padding:32px 20px 0;}
+  .tell-img{margin-top:-14vw;}
+}
+/* ===== /Tell-Hero ===== */
+
+/* ===== NEU: Treffer-Abschluss ===== */
+.tell-end{padding-top:0;border-top:1px solid var(--rule);}
+.tell-end .tell-text{padding-top:clamp(56px,6vw,96px);}
+.tell-end .tell-h{color:var(--lime);}
+.tell-end .tell-sub span{color:var(--lime);font-weight:500;}
+@media(max-width:860px){
+  .tell-end .tell-text{padding-top:40px;}
+  .tell-end .tell-img{margin-top:-36vw;}
+}
+/* ===== /Treffer-Abschluss ===== */
 </style>
 <!-- Strukturierte Daten (SEO) -->
 <script type="application/ld+json">
@@ -261,6 +293,18 @@ table.cmp tr:last-child td { border-bottom: none; }
   <span class="dr-txt"><b>Welcome Deal</b><span class="dr-more"> · 20 Dossiers zum Kennenlernen — 40 % günstiger</span></span>
   <span class="dr-link">Ansehen →</span>
 </a>
+<!-- NEU: TELL-HERO -->
+<section class="tell" aria-label="Einstieg">
+  <div class="tell-text">
+    <p class="tell-h">Schön wär’s.</p>
+    <p class="tell-sub">Im Vertrieb ist das Ziel kleiner.<br>Deshalb zählen nicht mehr Pfeile,<br>sondern <span>genauere Schüsse</span>.</p>
+    <a href="#kontakt" class="tell-cta">Probeschuss anfordern <span aria-hidden="true">→</span></a>
+  </div>
+  <picture class="tell-img">
+    <source media="(max-width:860px)" type="image/webp" srcset="tell-mobile-600.webp 600w, tell-mobile-1200.webp 1200w" sizes="100vw">
+    <img src="tell-desktop-1440.webp" srcset="tell-desktop-1440.webp 1440w, tell-desktop-2880.webp 2880w" sizes="100vw" width="2880" height="1400" fetchpriority="high" alt="Collage: Junge mit übergroßem Apfel auf dem Kopf vor Alpenpanorama, beschriftet mit „Tell Junior“">
+  </picture>
+</section>
 <!-- HERO -->
 <section class="hero">
   <div class="hero-l">
@@ -646,7 +690,7 @@ Max Mustermann</div>
     </div>
     <div style="padding:64px 56px;background:#FAFAF8;">
       <div class="form-wrap">
-        <form id="testLeadForm" name="testlead" data-netlify="true" netlify-honeypot="bot-field" action="/danke.html" style="display:flex;flex-direction:column;gap:14px;">
+        <form action='/danke' id='testLeadForm' method='post' name='testlead' style='display:flex;flex-direction:column;gap:14px;'>
           <input type="hidden" name="form-name" value="testlead">
           <input name="bot-field" style="display:none">
           <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
@@ -697,14 +741,26 @@ Max Mustermann</div>
     </div>
   </div>
 </section>
+<!-- NEU: TREFFER-ABSCHLUSS -->
+<section class="tell tell-end" aria-label="Abschluss">
+  <div class="tell-text">
+    <p class="tell-h">Treffer.</p>
+    <p class="tell-sub">Mit uns zielen Sie <span>genauer</span> -<br>und treffen öfter.</p>
+    <a href="#kontakt" class="tell-cta">Probeschuss anfordern <span aria-hidden="true">→</span></a>
+  </div>
+  <picture class="tell-img">
+    <source media="(max-width:860px)" type="image/webp" srcset="treffer-mobile-600.webp 600w, treffer-mobile-1200.webp 1200w" sizes="100vw">
+    <img src="treffer-desktop-1440.webp" srcset="treffer-desktop-1440.webp 1440w, treffer-desktop-2880.webp 2880w" sizes="100vw" width="2880" height="1400" loading="lazy" alt="Collage: lachender Junge, der Apfel auf seinem Kopf ist von einem Pfeil durchbohrt, beschriftet mit „Tell Junior (erleichtert)“">
+  </picture>
+</section>
 <!-- FOOTER -->
 <footer>
   <div class="footer-logo">Scale<b>IQ</b><span>CONSULTING</span></div>
   <div>© 2026 ScaleIQ Consulting · David Wenningmann</div>
   <div style="display:flex;align-items:center;gap:16px;">
-    <a href="impressum.html" style="color:var(--muted);text-decoration:none;font-size:11px;" onmouseover="this.style.color='var(--ink)'" onmouseout="this.style.color='var(--muted)'">Impressum</a>
+    <a href='/impressum' onmouseout='this.style.color=\'var(--muted)\'' onmouseover='this.style.color=\'var(--ink)\'' style='color:var(--muted);text-decoration:none;font-size:11px;'>Impressum</a>
     <span style="color:var(--rule);">·</span>
-    <a href="datenschutz.html" style="color:var(--muted);text-decoration:none;font-size:11px;" onmouseover="this.style.color='var(--ink)'" onmouseout="this.style.color='var(--muted)'">Datenschutz</a>
+    <a href='/datenschutz' onmouseout='this.style.color=\'var(--muted)\'' onmouseover='this.style.color=\'var(--ink)\'' style='color:var(--muted);text-decoration:none;font-size:11px;'>Datenschutz</a>
   </div>
 </footer>
 <script>

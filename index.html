@@ -41,13 +41,13 @@ body { font-family: 'Inter', sans-serif; background: var(--paper); color: var(--
 .radar-line { position: fixed; left: 0; top: 0; bottom: 0; width: 3px; background: linear-gradient(to bottom, var(--lime) 0%, rgba(200,241,53,0.3) 40%, transparent 100%); z-index: 200; animation: radar-pulse 3s ease-in-out infinite; }
 @keyframes radar-pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
 /* NAV */
-nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; height: 56px; display: flex; align-items: center; justify-content: space-between; padding: 0 48px 0 20px; background: rgba(250,250,248,0.94); backdrop-filter: blur(16px); border-bottom: 1px solid var(--rule); }
+nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; height: 56px; display: flex; align-items: center; justify-content: space-between; padding: 0 48px 0 20px; background: rgba(12,12,10,0.96); backdrop-filter: blur(16px); border-bottom: 1px solid rgba(255,255,255,0.08); }
 .logo-wrap { display: flex; flex-direction: column; line-height: 1; padding-left: 16px; }
 .logo-main { font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 20px; letter-spacing: -.02em; color: var(--ink); }
 .logo-main b { color: var(--lime-d); }
 .logo-sub { font-family: 'Space Grotesk', sans-serif; font-weight: 500; font-size: 9px; letter-spacing: .22em; text-transform: uppercase; color: var(--muted); margin-top: 1px; }
-.nav-cta { height: 36px; padding: 0 20px; background: var(--ink); color: var(--paper); font-family: 'Space Grotesk', sans-serif; font-size: 12px; font-weight: 600; letter-spacing: .04em; text-decoration: none; display: inline-flex; align-items: center; gap: 6px; transition: background .15s; }
-.nav-cta:hover { background: var(--lime); color: var(--ink); }
+.nav-cta { height: 36px; padding: 0 20px; background: var(--lime); color: var(--ink); font-family: 'Space Grotesk', sans-serif; font-size: 12px; font-weight: 700; letter-spacing: .04em; text-decoration: none; display: inline-flex; align-items: center; gap: 6px; transition: opacity .15s; }
+.nav-cta:hover { opacity: .85; }
 .nav-cta-short { display: none; }
 /* HERO */
 .deal-ribbon { position: fixed; top: 56px; left: 0; right: 0; z-index: 99; height: 40px; display: flex; align-items: center; justify-content: center; gap: 16px; background: var(--ink); border-bottom: 1px solid rgba(200,241,53,.28); padding: 0 20px; overflow: hidden; }
@@ -282,7 +282,6 @@ table.cmp tr:last-child td { border-bottom: none; }
     <img src="scaleiq-logo.png" alt="ScaleIQ Consulting" style="height:34px;width:auto;display:block;">
   </a>
   <div style="display:flex;align-items:center;gap:18px;">
-    <a href="/welcome" class="nav-welcome" style="font-family:'Space Grotesk',sans-serif;font-size:12px;font-weight:600;letter-spacing:.02em;color:var(--muted);text-decoration:none;white-space:nowrap;" onmouseover="this.style.color='var(--ink)'" onmouseout="this.style.color='var(--muted)'">Kennenlern-Angebot</a>
     <a href="https://leadradarr.web.app/demo?k=showroom" class="nav-cta"><span class="nav-cta-full">Live-Demo ansehen</span><span class="nav-cta-short">Live-Demo</span> →</a>
   </div>
 </nav>
@@ -759,7 +758,7 @@ Max Mustermann</div>
 </section>
 <!-- FOOTER -->
 <footer>
-  <div class="footer-logo"><img src="scaleiq-logo.png" alt="ScaleIQ Consulting" style="height:28px;width:auto;display:block;"></div>
+  <div class="footer-logo">Scale<b>IQ</b><span>CONSULTING</span></div>
   <div>© 2026 ScaleIQ Consulting · David Wenningmann</div>
   <div style="display:flex;align-items:center;gap:16px;">
     <a href='/impressum' onmouseout="this.style.color='var(--muted)'" onmouseover="this.style.color='var(--ink)'" style='color:var(--muted);text-decoration:none;font-size:11px;'>Impressum</a>

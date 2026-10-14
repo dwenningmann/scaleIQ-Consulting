@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- NICHT-ÖFFENTLICH: nur per Link weitergeben -->
+<meta name="robots" content="noindex, nofollow">
+<title>Wie LeadRadar funktioniert — Ihre Fragen, ehrlich beantwortet · ScaleIQ Consulting</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #0C0C0A; --paper: #FAFAF8; --mid: #1A1A18;
+    --muted: #6B6B68; --rule: #E0E0DC; --lime: #C8F135; --lime-d: #8faa24;
+    --card: #FFFFFF;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Inter', sans-serif; background: var(--paper); color: var(--ink); -webkit-font-smoothing: antialiased; line-height: 1.6; overflow-x: hidden; }
+
+  /* Radar-Linie links (CI) */
+  .radar-line { position: fixed; left: 0; top: 0; bottom: 0; width: 3px; background: linear-gradient(to bottom, var(--lime) 0%, rgba(200,241,53,0.3) 40%, transparent 100%); z-index: 200; }
+
+  /* Nav */
+  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; height: 56px; display: flex; align-items: center; justify-content: space-between; padding: 0 28px 0 20px; background: rgba(12,12,10,0.96); backdrop-filter: blur(16px); border-bottom: 1px solid rgba(200,241,53,0.45); }
+  .logo-main { font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 19px; letter-spacing: -.02em; color: #fff; }
+  .logo-main b { color: var(--lime); }
+  .logo-sub { font-family: 'Space Grotesk', sans-serif; font-weight: 500; font-size: 8.5px; letter-spacing: .22em; text-transform: uppercase; color: rgba(255,255,255,.4); margin-top: 1px; }
+  .nav-cta { height: 36px; padding: 0 18px; background: var(--lime); color: var(--ink); font-family: 'Space Grotesk', sans-serif; font-size: 12px; font-weight: 700; letter-spacing: .04em; text-decoration: none; display: inline-flex; align-items: center; gap: 6px; transition: opacity .15s; }
+  .nav-cta:hover { opacity: .85; }
+
+  /* Hero */
+  header.hero { background: var(--ink); color: #fff; padding: 128px 24px 72px; position: relative; overflow: hidden; }
+  header.hero::after { content:''; position:absolute; inset:0; background: radial-gradient(120% 90% at 100% 0%, rgba(200,241,53,0.14), transparent 55%); pointer-events:none; }
+  .hero-wrap { max-width: 860px; margin: 0 auto; position: relative; }
+  .eyebrow { font-size: 11px; font-weight: 600; letter-spacing: .2em; text-transform: uppercase; color: var(--lime); margin-bottom: 20px; display: flex; align-items: center; gap: 10px; }
+  .eyebrow::before { content:''; width: 22px; height: 2px; background: var(--lime); display:block; }
+  header.hero h1 { font-family: 'Space Grotesk', sans-serif; font-size: clamp(34px, 5vw, 56px); font-weight: 700; line-height: 1.02; letter-spacing: -.03em; margin-bottom: 22px; }
+  header.hero h1 .lime { color: var(--lime); }
+  header.hero p.lead { font-size: 17px; color: rgba(255,255,255,.72); max-width: 620px; line-height: 1.65; }
+  .hero-note { margin-top: 26px; font-size: 13px; color: rgba(255,255,255,.45); border-left: 2px solid rgba(200,241,53,.5); padding-left: 14px; max-width: 560px; }
+
+  /* Jump-Nav */
+  .jump { max-width: 860px; margin: -28px auto 0; position: relative; z-index: 5; padding: 0 24px; }
+  .jump-inner { background: var(--card); border: 1px solid var(--rule); border-radius: 14px; padding: 16px 18px; display: flex; flex-wrap: wrap; gap: 8px; box-shadow: 0 10px 40px rgba(12,12,10,.08); }
+  .jump a { font-size: 12.5px; font-weight: 600; color: var(--ink); text-decoration: none; padding: 7px 13px; border: 1px solid var(--rule); border-radius: 20px; transition: all .15s; }
+  .jump a:hover { border-color: var(--lime-d); color: var(--lime-d); }
+
+  /* Content */
+  main { max-width: 860px; margin: 0 auto; padding: 56px 24px 24px; }
+  section.block { padding: 40px 0; border-bottom: 1px solid var(--rule); }
+  .sec-tag { font-size: 11px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--lime-d); margin-bottom: 10px; }
+  h2 { font-family: 'Space Grotesk', sans-serif; font-size: clamp(24px, 3.4vw, 34px); font-weight: 700; letter-spacing: -.02em; line-height: 1.1; margin-bottom: 18px; }
+  h3 { font-family: 'Space Grotesk', sans-serif; font-size: 17px; font-weight: 600; margin: 24px 0 8px; }
+  p { font-size: 15.5px; color: #2a2a27; margin-bottom: 14px; }
+  p.muted { color: var(--muted); font-size: 14.5px; }
+  strong { font-weight: 600; color: var(--ink); }
+  .lime-text { color: var(--lime-d); font-weight: 600; }
+
+  /* Steps */
+  .steps { counter-reset: s; margin: 20px 0 6px; }
+  .step { position: relative; padding: 0 0 20px 54px; }
+  .step:last-child { padding-bottom: 0; }
+  .step::before { counter-increment: s; content: counter(s); position: absolute; left: 0; top: 0; width: 34px; height: 34px; border-radius: 10px; background: var(--ink); color: var(--lime); font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 15px; display: flex; align-items: center; justify-content: center; }
+  .step::after { content: ''; position: absolute; left: 16px; top: 38px; bottom: 6px; width: 1.5px; background: var(--rule); }
+  .step:last-child::after { display: none; }
+  .step h3 { margin-top: 4px; }
+
+  /* Beleg-Box */
+  .proof { background: var(--card); border: 1px solid var(--rule); border-left: 3px solid var(--lime); border-radius: 12px; padding: 22px 24px; margin: 18px 0; }
+  .proof .label { font-size: 11px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--lime-d); margin-bottom: 12px; }
+  .proof ul { list-style: none; margin: 0; }
+  .proof li { font-size: 14.5px; color: #2a2a27; padding: 7px 0 7px 26px; position: relative; border-top: 1px solid var(--rule); }
+  .proof li:first-child { border-top: none; }
+  .proof li::before { content: '→'; position: absolute; left: 0; color: var(--lime-d); font-weight: 700; }
+  .proof li b { font-weight: 600; }
+
+  /* Tabelle */
+  .cmp { width: 100%; border-collapse: collapse; margin: 20px 0 6px; font-size: 14px; background: var(--card); border: 1px solid var(--rule); border-radius: 12px; overflow: hidden; }
+  .cmp th, .cmp td { text-align: left; padding: 13px 16px; border-bottom: 1px solid var(--rule); vertical-align: top; }
+  .cmp thead th { background: var(--ink); color: #fff; font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 13px; }
+  .cmp thead th.hl { color: var(--lime); }
+  .cmp tbody td:first-child { font-weight: 600; color: var(--ink); width: 26%; }
+  .cmp tbody td.hl { background: rgba(200,241,53,.08); color: #1c1c19; }
+  .cmp tr:last-child td { border-bottom: none; }
+
+  /* Preise */
+  .tiers { display: grid; grid-template-columns: repeat(3,1fr); gap: 14px; margin: 20px 0 10px; }
+  .tier { border: 1px solid var(--rule); border-radius: 14px; padding: 20px; background: var(--card); }
+  .tier.hot { background: var(--ink); color: #fff; border-color: var(--ink); }
+  .tier .t-name { font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 16px; }
+  .tier.hot .t-name { color: var(--lime); }
+  .tier .t-q { font-size: 12.5px; color: var(--muted); margin: 4px 0 12px; }
+  .tier.hot .t-q { color: rgba(255,255,255,.55); }
+  .tier .t-lz { font-size: 13px; font-weight: 600; }
+  .tier .t-sub { font-size: 12.5px; color: var(--muted); margin-top: 6px; }
+  .tier.hot .t-sub { color: rgba(255,255,255,.55); }
+  .tier .t-badge { display:inline-block; font-size:9px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; background: var(--lime); color: var(--ink); padding: 3px 8px; border-radius: 10px; margin-bottom: 8px; }
+  .price-note { font-size: 13.5px; color: var(--muted); }
+  .price-big { font-family:'Space Grotesk',sans-serif; font-weight:700; }
+
+  /* FAQ accordion */
+  .faq details { border: 1px solid var(--rule); border-radius: 12px; margin-bottom: 10px; background: var(--card); overflow: hidden; }
+  .faq summary { cursor: pointer; list-style: none; padding: 16px 20px; font-family:'Space Grotesk',sans-serif; font-weight: 600; font-size: 15.5px; display: flex; justify-content: space-between; align-items: center; gap: 14px; }
+  .faq summary::-webkit-details-marker { display: none; }
+  .faq summary::after { content: '+'; font-size: 20px; color: var(--lime-d); font-weight: 400; flex-shrink: 0; }
+  .faq details[open] summary::after { content: '–'; }
+  .faq details[open] summary { border-bottom: 1px solid var(--rule); }
+  .faq .ans { padding: 16px 20px 20px; }
+  .faq .ans p:last-child { margin-bottom: 0; }
+
+  /* CTA */
+  .cta-block { background: var(--ink); color: #fff; border-radius: 18px; padding: 44px 36px; margin: 48px 0 24px; text-align: center; position: relative; overflow: hidden; }
+  .cta-block::after { content:''; position:absolute; inset:0; background: radial-gradient(120% 120% at 0% 100%, rgba(200,241,53,0.16), transparent 55%); pointer-events:none; }
+  .cta-block h2 { color:#fff; margin-bottom: 12px; position:relative; }
+  .cta-block p { color: rgba(255,255,255,.7); max-width: 520px; margin: 0 auto 26px; position:relative; }
+  .cta-row { display:flex; gap: 14px; justify-content: center; flex-wrap: wrap; position:relative; }
+  .btn-main { height: 50px; padding: 0 28px; background: var(--lime); color: var(--ink); font-family:'Space Grotesk',sans-serif; font-size: 14px; font-weight: 700; text-decoration: none; display: inline-flex; align-items: center; gap: 9px; border-radius: 2px; transition: opacity .15s; }
+  .btn-main:hover { opacity: .88; }
+  .btn-ghost { height: 50px; padding: 0 26px; background: transparent; color: #fff; border: 1px solid rgba(255,255,255,.3); font-family:'Space Grotesk',sans-serif; font-size: 14px; font-weight: 600; text-decoration: none; display: inline-flex; align-items: center; gap: 9px; border-radius: 2px; transition: border-color .15s; }
+  .btn-ghost:hover { border-color: var(--lime); }
+
+  footer { max-width: 860px; margin: 0 auto; padding: 28px 24px 56px; border-top: 1px solid var(--rule); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; font-size: 12.5px; color: var(--muted); }
+  footer a { color: var(--muted); text-decoration: none; }
+  footer a:hover { color: var(--ink); }
+
+  @media (max-width: 680px) {
+    .tiers { grid-template-columns: 1fr; }
+    .cmp thead { display: none; }
+    .cmp, .cmp tbody, .cmp tr, .cmp td { display: block; width: 100%; }
+    .cmp tbody td { border: none; padding: 4px 16px; }
+    .cmp tbody tr { border-bottom: 1px solid var(--rule); padding: 10px 0; }
+    .cmp tbody td:first-child { padding-top: 12px; font-size: 13px; color: var(--lime-d); }
+    .step { padding-left: 46px; }
+  }
+</style>
+</head>
+<body>
+<div class="radar-line"></div>
+
+<nav>
+  <a href="/" style="text-decoration:none;display:flex;flex-direction:column;">
+    <span class="logo-main">Scale<b>IQ</b></span>
+    <span class="logo-sub">Consulting</span>
+  </a>
+  <!-- Buchungslink: BITTE durch euren Kalender-Link ersetzen (gleicher wie in der Demo) -->
+  <a href="https://calendar.app.google/BITTE-LINK-EINSETZEN" class="nav-cta" target="_blank" rel="noopener">Termin buchen →</a>
+</nav>
+
+<header class="hero">
+  <div class="hero-wrap">
+    <div class="eyebrow">Transparenz für Interessenten</div>
+    <h1>Wie LeadRadar funktioniert —<br><span class="lime">Ihre Fragen, ehrlich beantwortet.</span></h1>
+    <p class="lead">Keine Blackbox, keine Versprechen auf Knopfdruck. Hier erklären wir Schritt für Schritt, wie wir Entscheider-Dossiers erstellen, woher die Daten stammen, wie wir tatsächlichen Bedarf belegen, worin wir uns von einem CRM wie HubSpot unterscheiden — und was das kostet.</p>
+    <p class="hero-note">Diese Seite ist nicht öffentlich. Wir teilen sie gezielt mit Interessenten, die es genau wissen wollen.</p>
+  </div>
+</header>
+
+<div class="jump">
+  <div class="jump-inner">
+    <a href="#vorgehen">So funktioniert es</a>
+    <a href="#quellen">Datenquellen</a>
+    <a href="#bedarf">Bedarf belegen</a>
+    <a href="#hubspot">vs. HubSpot / CRM</a>
+    <a href="#kosten">Kosten &amp; Konditionen</a>
+    <a href="#faq">Weitere Fragen</a>
+  </div>
+</div>
+
+<main>
+
+  <!-- 1 VORGEHEN -->
+  <section class="block" id="vorgehen">
+    <div class="sec-tag">Das Vorgehen</div>
+    <h2>Wir liefern keine Listen. Wir liefern Dossiers.</h2>
+    <p>Ein Dossier ist ein vollständig recherchiertes Entscheider-Profil zu <strong>einem</strong> passenden Zielunternehmen — inklusive des richtigen Ansprechpartners, eines belegten Aufhängers („Warum gerade jetzt") und einer fertigen, persönlichen Erstansprache für Mail und LinkedIn. Alles live am Liefertag recherchiert, versandfertig. Der Ablauf:</p>
+
+    <div class="steps">
+      <div class="step">
+        <h3>Matching statt Liste</h3>
+        <p class="muted">Es beginnt mit Ihrem Angebot, nicht mit einer Datenbank. Wir werten Ihre Website, Referenzen und Leistungen aus und bauen daraus Angebotsprofile. Jeder Lead wird gegen genau dieses Profil geprüft — belegbar auf beiden Seiten.</p>
+      </div>
+      <div class="step">
+        <h3>Mehrstufige Vorqualifizierung</h3>
+        <p class="muted">Vor-Screen (Website, Bewertungen, Ketten-Check) → Tiefen-Recherche mit Fit-Score (nur Firmen mit echtem Bedarf werden zum Dossier) → Extended Websuche nach aktuellen Auslösern. Was die Schwelle nicht besteht, erreicht Sie gar nicht erst.</p>
+      </div>
+      <div class="step">
+        <h3>Die richtige Ebene — namentlich</h3>
+        <p class="muted">Wir recherchieren nicht den Erstbesten, sondern die Ebene, die wirklich entscheidet (z. B. Einkauf, technische Leitung, Fertigungs-/Betriebsleitung) — namentlich und, wo möglich, mit geprüfter Direktadresse.</p>
+      </div>
+      <div class="step">
+        <h3>Sie sehen, geben frei, senden</h3>
+        <p class="muted">Jedes Dossier kommt mit fertigem Text. Sie prüfen, geben frei und senden mit einem Klick aus Ihrem eigenen Postfach. Nichts verlässt Ihr Haus, das Sie nicht gesehen haben — wir automatisieren die Recherche, niemals den Versand in Ihrem Namen.</p>
+      </div>
+    </div>
+    <p class="muted" style="margin-top:18px;">Kurz: <strong>Wir liefern hochqualifizierte Dossiers — den Vertrieb machen Sie.</strong> Termine oder Abschlüsse versprechen wir bewusst nicht; wir sorgen dafür, dass Ihnen die Gelegenheiten nicht ausgehen.</p>
+  </section>
+
+  <!-- 2 QUELLEN -->
+  <section class="block" id="quellen">
+    <div class="sec-tag">Datenquellen</div>
+    <h2>Woher die Daten kommen.</h2>
+    <p>Ausschließlich <strong>öffentlich zugängliche Geschäftsinformationen</strong> — recherchiert und zusammengeführt, nicht aus einer gekauften Adressdatenbank entnommen:</p>
+    <div class="proof">
+      <ul>
+        <li><b>Unternehmens-Websites</b> — Produktportfolio, Fertigungstiefe, Referenzen, Zertifizierungen.</li>
+        <li><b>Impressum &amp; Team-/Kontaktseiten</b> — namentliche Entscheider mit Funktion und, wo veröffentlicht, Kontakt.</li>
+        <li><b>Branchen- &amp; Firmenverzeichnisse</b> (u. a. öffentliche Kartendienste) — zur Identifikation passender Unternehmen nach Branche und Region.</li>
+        <li><b>Öffentliche Auslöser</b> — Presse, Ausschreibungen, Investitionen, neue Produktlinien, Stellenanzeigen, Messeauftritte.</li>
+        <li><b>Öffentlich sichtbare Profile der Fachebene</b> — zur Bestätigung der richtigen Ansprechperson.</li>
+      </ul>
+    </div>
+    <p>Jeder Fund im Dossier ist <strong>mit Quelle belegt</strong> — kein Raten. E-Mail-Adressen werden vor der Lieferung auf Zustellbarkeit geprüft, um Rückläufer gering zu halten.</p>
+    <p class="muted"><strong>Rechtlich sauber:</strong> Es handelt sich um öffentliche B2B-Geschäftskontakte, keine Privatpersonen, kein gekaufter Verteiler. Versand erfolgt einzeln aus Ihrem Postfach mit Opt-out in jeder Mail. Ein Auftragsverarbeitungs-Vertrag (AVV) ist Teil des Vertrags — Ihre Daten bleiben Ihre.</p>
+  </section>
+
+  <!-- 3 BEDARF -->
+  <section class="block" id="bedarf">
+    <div class="sec-tag">Bedarf erkennen &amp; belegen</div>
+    <h2>Wie wir tatsächlichen Bedarf belegen.</h2>
+    <p>Am konkreten Beispiel <strong>„externe Vergabe von Kunststoff-Spritzgussteilen / Baugruppen"</strong>: Wir behaupten keinen Auftrag — wir sammeln belastbare <strong>Indizien</strong>, dass ein Unternehmen Teile Ihrer Art extern bezieht oder beziehen dürfte, und legen jedes Indiz mit Quelle offen. Typische Signale:</p>
+    <div class="proof">
+      <div class="label">Signale für externen Spritzguss-Bedarf</div>
+      <ul>
+        <li><b>Produkt braucht Kunststoffteile, Firma fertigt sie erkennbar nicht selbst</b> — Gerät/Baugruppe mit Gehäuse, Trägern, Funktionsteilen, aber keine eigene Spritzguss-Fertigung auf der Website.</li>
+        <li><b>Zertifizierungen, die Serienqualität verlangen</b> — z. B. ISO 13485 (Medizintechnik), IATF — oft an regulierte Zulieferkette geknüpft.</li>
+        <li><b>Wachstums- &amp; Kapazitätssignale</b> — neue Produktlinie, Zulassung, Marktstart, Werks-/Linienausbau → neuer oder steigender Teilebedarf.</li>
+        <li><b>Beschaffungs-Signale</b> — Stellenanzeigen für Einkauf/Lieferantenmanagement, „Lieferanten gesucht", Lieferanten-Portale.</li>
+        <li><b>Branchen-Fit</b> — Medizintechnik, Pharma, Analytik/Diagnostik mit technischen Komponenten, die klassisch im Spritzguss entstehen.</li>
+      </ul>
+    </div>
+    <p>Treffen genug dieser Signale zu, wird das Unternehmen zum Dossier — mit einem Aufhänger, der genau auf diesen belegten Anlass zugeschnitten ist. Trifft die Vorqualifizierung die Schwelle nicht, kommt der Lead gar nicht zu Ihnen.</p>
+    <p class="muted"><strong>Ehrlich eingeordnet:</strong> Wir belegen eine fundierte Bedarfs-<em>Wahrscheinlichkeit</em>, keine Garantie für einen konkreten, offenen Auftrag. Genau deshalb liefern wir weniger, dafür handverlesen — statt Massenlisten, die Sie selbst sortieren müssten.</p>
+  </section>
+
+  <!-- 4 HUBSPOT -->
+  <section class="block" id="hubspot">
+    <div class="sec-tag">Abgrenzung</div>
+    <h2>LeadRadar vs. Prospecting im CRM (z. B. HubSpot).</h2>
+    <p>Beides hat seinen Platz — aber es sind zwei verschiedene Dinge. Ein CRM wie HubSpot ist ein <strong>Werkzeug, das Sie bedienen</strong>: Es stellt Daten, Filter und KI-Funktionen bereit, mit denen <em>Ihr Team</em> recherchiert, textet und verwaltet. LeadRadar ist eine <strong>Dienstleistung, die das fertige Ergebnis liefert</strong>: handverlesene, live recherchierte Dossiers mit belegter Ansprache.</p>
+    <table class="cmp">
+      <thead>
+        <tr><th></th><th>CRM-Prospecting (z. B. HubSpot)</th><th class="hl">LeadRadar</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Was es ist</td><td>Plattform &amp; Datenbank, die Sie bedienen</td><td class="hl">Fertige Entscheider-Dossiers, geliefert</td></tr>
+        <tr><td>Datenbasis</td><td>Datenbank-Einträge (Momentaufnahme)</td><td class="hl">Live am Liefertag recherchiert, mit Quelle</td></tr>
+        <tr><td>Ansprache</td><td>Vorlagen/Bausteine — Sie schreiben</td><td class="hl">Fertige, belegte Erstansprache je Lead</td></tr>
+        <tr><td>Zielperson</td><td>Firmen-/Kontaktlisten zum Filtern</td><td class="hl">Namentlich die entscheidende Fachebene</td></tr>
+        <tr><td>Bedarfs-Beleg</td><td>Signale/Filter — Sie interpretieren</td><td class="hl">Belegter „Warum jetzt"-Anlass, zitiert</td></tr>
+        <tr><td>Aufwand bei Ihnen</td><td>Recherchieren, qualifizieren, texten</td><td class="hl">Prüfen, freigeben, senden</td></tr>
+      </tbody>
+    </table>
+    <p class="muted" style="margin-top:16px;"><strong>Kein Entweder-oder:</strong> LeadRadar und HubSpot ergänzen sich. Wir <em>füttern</em> Ihr CRM mit versandfertigen, hochwertigen Leads; HubSpot verwaltet danach Pipeline, Nachverfolgung und Reporting. Prüfen Sie ruhig zuerst, was HubSpot bei Ihnen abdeckt — den handgemachten, belegten Dossier-Teil nimmt Ihnen ein CRM nicht ab.</p>
+  </section>
+
+  <!-- 5 KOSTEN -->
+  <section class="block" id="kosten">
+    <div class="sec-tag">Kosten &amp; Konditionen</div>
+    <h2>Transparenter Rahmen.</h2>
+    <p>Ein durchgängiges Leistungsniveau — <strong>bis zu 100 Dossiers pro Monat</strong>, inklusive Recherche, individueller Texte, Follow-up-Vorlagen und CRM-Zugang. Kein Setup, keine versteckten Kosten. Drei Bindungs-Varianten:</p>
+    <div class="tiers">
+      <div class="tier">
+        <div class="t-name">Welcome</div>
+        <div class="t-q">bis zu 100 Dossiers / Monat</div>
+        <div class="t-lz">3 Monate · Kennenlern-Tarif</div>
+        <div class="t-sub">Einmalig, keine automatische Verlängerung</div>
+      </div>
+      <div class="tier hot">
+        <div class="t-badge">Empfohlen</div>
+        <div class="t-name">Standard</div>
+        <div class="t-q">bis zu 100 Dossiers / Monat</div>
+        <div class="t-lz">12 Monate</div>
+        <div class="t-sub">Der sanfte Anschluss nach dem Welcome Deal</div>
+      </div>
+      <div class="tier">
+        <div class="t-name">Flex</div>
+        <div class="t-q">bis zu 100 Dossiers / Monat</div>
+        <div class="t-lz">monatlich kündbar</div>
+        <div class="t-sub">Zum Ende des Folgemonats · volle Freiheit</div>
+      </div>
+    </div>
+    <p class="price-note"><span class="price-big">Ab 1.490 € / Monat</span> zzgl. USt. — die konkrete Zuordnung (Tarif, Laufzeit, Volumen) stimmen wir im kurzen Gespräch auf Ihren Bedarf ab. Mehr als 100 Dossiers: auf Anfrage.</p>
+  </section>
+
+  <!-- FAQ -->
+  <section class="block" id="faq">
+    <div class="sec-tag">Weitere Fragen</div>
+    <h2>Gut zu wissen.</h2>
+    <div class="faq">
+      <details>
+        <summary>Wie schnell bekommen wir die ersten Dossiers?</summary>
+        <div class="ans"><p>In der Regel liegen die ersten fertigen Dossiers bereits in der ersten Woche bereit — ohne Projektphase. Sie nennen uns einmalig Zielbranche, Region und Tonalität (rund 15 Minuten), wir liefern.</p></div>
+      </details>
+      <details>
+        <summary>Ist das DSGVO-konform?</summary>
+        <div class="ans"><p>Ja. Wir nutzen ausschließlich öffentliche B2B-Geschäftskontakte, versenden einzeln aus Ihrem Postfach mit Opt-out in jeder Mail, kein Massenversand, kein gekaufter Verteiler. Ein Auftragsverarbeitungs-Vertrag (AVV) ist Teil des Vertrags.</p></div>
+      </details>
+      <details>
+        <summary>Übernehmen Sie auch den Versand und die Termine?</summary>
+        <div class="ans"><p>Nein — bewusst nicht. Wir liefern die fertigen Dossiers inkl. Ansprache; gesendet wird aus Ihrem Postfach, nach Ihrer Freigabe. Den Vertrieb führen Sie, mit Ihrer Reputation und Ihrer Stimme. So geht nichts in Ihrem Namen raus, das Sie nicht gesehen haben.</p></div>
+      </details>
+      <details>
+        <summary>Was ist Ihr stärkstes Unterscheidungsmerkmal?</summary>
+        <div class="ans"><p>Wir sprechen namentlich die Fachebene an, die wirklich entscheidet — nicht reflexartig die Geschäftsführung, deren Postfach ohnehin überquillt. Persönlich recherchiert, technisch verifiziert. Genau das ist der Unterschied zwischen „schon wieder Werbung" und „das ist wirklich für mich".</p></div>
+      </details>
+      <details>
+        <summary>Für welche Branchen eignet sich das?</summary>
+        <div class="ans"><p>Überall dort, wo erklärungsbedürftige B2B-Leistungen mit klaren Fachentscheidern verkauft werden — z. B. Maschinenbau, Medizin- &amp; Labortechnik, Pharma, Analytik/Diagnostik, Zuliefer- und Fertigungstechnik, IT. Zielbranche und Region definieren Sie im Liefer-Brief, auch aufgeteilt (etwa 50 Medizintechnik + 50 Pharma pro Monat).</p></div>
+      </details>
+      <details>
+        <summary>Was passiert, wenn ein Lead nicht passt?</summary>
+        <div class="ans"><p>Das ist für uns das wichtigste Rückmeldesignal. Unpassende Leads oder falsche Daten melden Sie uns — wir justieren die Auswahl nach. Die mehrstufige Vorqualifizierung sorgt vorab dafür, dass schwache Firmen gar nicht erst zu Ihnen gelangen.</p></div>
+      </details>
+      <details>
+        <summary>Können wir das erst unverbindlich ansehen?</summary>
+        <div class="ans"><p>Gern. Wir erstellen Ihnen ein beispielhaftes Entscheider-Dossier zu Ihrer Zielgruppe und zeigen Ihnen das System in einer kurzen, persönlichen Demo. Danach entscheiden Sie in Ruhe.</p></div>
+      </details>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <div class="cta-block">
+    <h2>Noch Fragen — oder ein Beispiel-Dossier?</h2>
+    <p>Lassen Sie uns 20 Minuten sprechen. Wir erstellen Ihnen ein Entscheider-Dossier zu Ihrer Zielgruppe und ordnen Nutzen und Konditionen konkret für Ihren Fall ein.</p>
+    <div class="cta-row">
+      <!-- Buchungslink: BITTE durch euren Kalender-Link ersetzen -->
+      <a href="https://calendar.app.google/BITTE-LINK-EINSETZEN" class="btn-main" target="_blank" rel="noopener">Termin buchen →</a>
+      <a href="mailto:connect@scaleiq-consulting.de" class="btn-ghost">connect@scaleiq-consulting.de</a>
+    </div>
+  </div>
+
+</main>
+
+<footer>
+  <span>ScaleIQ Consulting · LEADRADAR</span>
+  <span><a href="mailto:connect@scaleiq-consulting.de">connect@scaleiq-consulting.de</a> · scaleiq-consulting.de</span>
+</footer>
+
+</body>
+</html>
